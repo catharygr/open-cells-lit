@@ -13,11 +13,37 @@ export class ContadorPage extends LitElement {
       padding: 2rem;
       margin: 5rem auto;
     }
+
+      .container-contador button {
+        padding: 0.5rem 1rem;
+        background-color: #f1f1f1;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
       .contador {
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 1rem;
+      }
+      .input-contador {
+        padding: 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 40px;
+      }
+      .botones {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+      }
+      .btn-contador {
+        padding: 0.5rem 1rem;
+        background-color: #f1f1f1;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
       }
 }
   `;
@@ -26,7 +52,7 @@ export class ContadorPage extends LitElement {
 
   @state() private _start = false;
 
-  @query('#seconds') secondsInput!: HTMLInputElement;
+  @query('#input-seconds') secondsInput!: HTMLInputElement;
 
   startCounter() {
     this._seconds = this.secondsInput.value
@@ -55,15 +81,26 @@ export class ContadorPage extends LitElement {
           <h1>Contador</h1>
           <div>
             <label for="input-seconds">Segundos:</label>
-            <input type="text" id="input-seconds" value="300" />
+            <input
+              class="input-contador"
+              type="text"
+              id="input-seconds"
+              value="300"
+            />
           </div>
           <contador-display segundos=${this._seconds} ?start=${this._start}
             >Display</contador-display
           >
           <div class="botones">
-            <button @click=${this.startCounter}>Start</button>
-            <button @click=${this.stopCounter}>Stop</button>
-            <button @click=${this.resetCounter}>Reset</button>
+            <button class="btn-contador" @click=${this.startCounter}>
+              Start
+            </button>
+            <button class="btn-contador" @click=${this.stopCounter}>
+              Stop
+            </button>
+            <button class="btn-contador" @click=${this.resetCounter}>
+              Reset
+            </button>
           </div>
         </div>
       </div>
