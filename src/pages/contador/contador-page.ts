@@ -1,6 +1,7 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, state, query } from 'lit/decorators.js';
 import { PageController } from '@open-cells/page-controller';
+import './contador-display.ts';
 
 @customElement('contador-page')
 export class ContadorPage extends LitElement {
@@ -103,6 +104,7 @@ export class ContadorPage extends LitElement {
             </button>
           </div>
         </div>
+        <contador-display></contador-display>
       </div>
     `;
   }
