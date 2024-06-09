@@ -1,5 +1,5 @@
 import { LitElement, html, css } from 'lit';
-import { customElement, property, state } from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
 
 @customElement('contador-display')
 export class ContadorDisplay extends LitElement {
@@ -14,56 +14,17 @@ export class ContadorDisplay extends LitElement {
   `;
 
   @property({ type: Number })
-  tiempo: number = 300;
-  intervalId: any = null;
-  tiempoInicial: number = this.tiempo;
-
-  get horas() {
-    return Math.floor(this.tiempo / 3600);
-  }
-
-  get minutos() {
-    return Math.floor((this.tiempo % 3600) / 60);
-  }
-
-  get segundos() {
-    return this.tiempo % 60;
-  }
-
-  startCountdown() {
-    if (this.intervalId) {
-      return;
-    }
-
-    this.intervalId = setInterval(() => {
-      if (this.tiempo > 0) {
-        this.tiempo--;
-      } else {
-        this.stopCountdown();
-      }
-    }, 1000);
-  }
-
-  stopCountdown() {
-    if (this.intervalId) {
-      clearInterval(this.intervalId);
-      this.intervalId = null;
-    }
-  }
-
-  resetCountdown() {
-    this.stopCountdown();
-    this.tiempo = this.tiempoInicial;
-  }
+  segundos?: number;
 
   render() {
+    console.log(this.segundos);
     return html`
       <div class="display">
-        <div id="horas" class="horas">${this.horas}</div>
+        <div id="horas" class="horas">00</div>
         :
-        <div id="minutos" class="minutos">${this.minutos}</div>
+        <div id="minutos" class="minutos">00</div>
         :
-        <div id="segundos">${this.segundos}</div>
+        <div id="segundos">00</div>
       </div>
     `;
   }
