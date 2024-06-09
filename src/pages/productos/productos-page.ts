@@ -1,15 +1,16 @@
-import { html, LitElement } from 'lit';
+import { css, html, LitElement } from 'lit';
 import { PageController } from '@open-cells/page-controller';
 import { customElement, state } from 'lit/decorators.js';
 
-// @ts-ignore
 @customElement('productos-page')
 export class ProductosPage extends LitElement {
   pageController = new PageController(this);
 
-  protected createRenderRoot(): HTMLElement | DocumentFragment {
-    return this;
-  }
+  static styles = css`
+    img {
+      width: 100px;
+    }
+  `;
 
   @state() private _productos: any[] = [];
 
@@ -20,11 +21,25 @@ export class ProductosPage extends LitElement {
     });
   }
 
+  disconnectedCallback(): void {
+    super.disconnectedCallback();
+    this.pageController.unsubscribe('ch_products');
+  }
+
   render() {
+    console.log(this._productos);
     return html`
       <button @click="${() => this.pageController.navigate('home')}">
         Go to home page
       </button>
+      ${this._productos.map(
+        (producto) => html`
+          <h3>${producto.title}</h3>
+          <p>${producto.description}</p>
+          <p>${producto.price}</p>
+          <img src="${producto.image}" alt="${producto.title}" />
+        `
+      )}
     `;
   }
 }

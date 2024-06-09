@@ -26,7 +26,7 @@ export const styles = css`
   main {
     flex: 1;
     position: relative;
-    overflow: hidden;
+    // overflow: hidden;
   }
 
   main ::slotted(*) {
@@ -38,7 +38,7 @@ export const styles = css`
     visibility: hidden;
   }
 
-  main ::slotted([state="active"]) {
+  main ::slotted([state='active']) {
     visibility: visible;
   }
-  `;
+`;
