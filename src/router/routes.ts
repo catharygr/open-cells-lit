@@ -17,4 +17,12 @@ export const routes: RouteDefinition[] = [
       await import('../pages/productos/productos-page.js');
     },
   },
+  {
+    path: '/contador',
+    name: 'contador',
+    component: 'contador-page',
+    action: async () => {
+      await import('../pages/contador/contador-page.js');
+    },
+  },
 ];

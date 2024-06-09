@@ -17,6 +17,9 @@ export class HomePage extends LitElement {
       <button @click="${() => this.pageController.navigate('productos')}">
         Go to productos page
       </button>
+      <button @click="${() => this.pageController.navigate('contador')}">
+        Go to contador page
+      </button>
     `;
   }
 }
