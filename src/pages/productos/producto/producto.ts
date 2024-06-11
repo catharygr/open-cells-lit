@@ -21,13 +21,15 @@ export class ProductoPage extends LitElement {
   @state()
   private _producto: any = {};
 
-  onPageEnter() {
+  connectedCallback(): void {
+    super.connectedCallback();
     this.pageController.subscribe('ch_products', (data: any[]) => {
       this._allProductos = data;
     });
   }
 
-  onPageLeave() {
+  disconnectedCallback(): void {
+    super.disconnectedCallback();
     this.pageController.unsubscribe('ch_products');
   }
 
