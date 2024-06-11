@@ -28,10 +28,7 @@ export class ProductoPage extends LitElement {
   flex-direction: column;
   gap: 0.5rem;
 }
-    .link {
-      text-decoration: underline;
-      cursor: pointer;
-    }
+   
   `;
 
   @property({ type: Object })
@@ -76,9 +73,13 @@ export class ProductoPage extends LitElement {
         />
         <div class="product-details">
           <h3>${this._producto ? this._producto.title : ''}</h3>
-          <p>${this._producto ? this._producto.price : ''}</p>
+          <p class="product-price">
+            ${this._producto ? this._producto.price : ''}
+          </p>
           <p>${this._producto ? this._producto.description : ''}</p>
-          <p>${this._producto ? this._producto.category : ''}</p>
+          <p class="product-category">
+            ${this._producto ? this._producto.category : ''}
+          </p>
         </div>
       </div>
     `;
