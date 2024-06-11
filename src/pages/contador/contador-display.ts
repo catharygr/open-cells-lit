@@ -1,5 +1,5 @@
 import { LitElement, html, css } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { customElement, property, state } from 'lit/decorators.js';
 
 @customElement('contador-display')
 export class ContadorDisplay extends LitElement {
@@ -13,18 +13,53 @@ export class ContadorDisplay extends LitElement {
     }
   `;
 
-  @property({ type: Number })
+  @property({ type: Boolean })
+  start?: boolean = false;
+  @property({ type: Number, reflect: true })
   segundos?: number;
+  private _intervalId?: number;
+
+  @state()
+  private _horas: number = 0;
+  @state()
+  private _minutos: number = 0;
+  @state()
+  private _segundos: number = 0;
+
+  updated(changedProperties: Map<string | number | symbol, unknown>) {
+    if (changedProperties.has('start')) {
+      if (this.start) {
+        this.starCounter();
+      } else {
+        this.stopCounter();
+      }
+    }
+  }
+
+  starCounter() {
+    this._intervalId = setInterval(() => {
+      this.segundos = (this.segundos ?? 0) - 1;
+      this._horas = Math.floor(this.segundos / 3600);
+      this._minutos = Math.floor((this.segundos % 3600) / 60);
+      this._segundos = Math.floor(this.segundos % 60);
+    }, 1000);
+  }
+
+  stopCounter() {
+    if (this._intervalId !== undefined) {
+      window.clearInterval(this._intervalId);
+      this._intervalId = undefined;
+    }
+  }
 
   render() {
-    console.log(this.segundos);
     return html`
       <div class="display">
-        <div id="horas" class="horas">00</div>
+        <div id="horas" class="horas">${this._horas}</div>
         :
-        <div id="minutos" class="minutos">00</div>
+        <div id="minutos" class="minutos">${this._minutos}</div>
         :
-        <div id="segundos">00</div>
+        <div id="segundos">${this._segundos}</div>
       </div>
     `;
   }

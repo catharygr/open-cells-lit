@@ -84,7 +84,7 @@ export class ContadorPage extends LitElement {
             <label for="input-seconds">Segundos:</label>
             <input
               class="input-contador"
-              type="text"
+              type="number"
               id="input-seconds"
               value="300"
             />
