@@ -5,11 +5,6 @@ import { PageController } from '@open-cells/page-controller';
 @customElement('producto-page')
 export class ProductoPage extends LitElement {
   pageController = new PageController(this);
-  @property({ type: Object })
-  params: {
-    productoId?: string;
-    sort?: string;
-  } = {};
 
   static styles = css`
     h3 {
@@ -17,13 +12,18 @@ export class ProductoPage extends LitElement {
     }
   `;
 
-  @state() private _productos: any = {};
+  @property({ type: Object })
+  params: {
+    productoId?: string;
+  } = {};
+  @state()
+  private _allProductos: any = [];
+  @state()
+  private _producto: any = {};
 
   onPageEnter() {
     this.pageController.subscribe('ch_products', (data: any[]) => {
-      this._productos = data.find(
-        (producto) => producto.id === this.params.productoId
-      );
+      this._allProductos = data;
     });
   }
 
@@ -31,7 +31,19 @@ export class ProductoPage extends LitElement {
     this.pageController.unsubscribe('ch_products');
   }
 
+  updated(changedProperties: { has: (arg0: string) => any }) {
+    if (changedProperties.has('params')) {
+      this.actualizarProducto(this._allProductos);
+    }
+  }
+
+  actualizarProducto(data: any[]) {
+    this._producto = data.find(
+      (producto) => producto.id === this.params.productoId
+    );
+  }
+
   render() {
-    return html` <h3>${this._productos.title}</h3>`;
+    return html` <h3>${this._producto ? this._producto.title : ''}</h3>`;
   }
 }
