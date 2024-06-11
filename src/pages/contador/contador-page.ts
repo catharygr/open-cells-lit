@@ -104,7 +104,6 @@ export class ContadorPage extends LitElement {
             </button>
           </div>
         </div>
-        <contador-display></contador-display>
       </div>
     `;
   }
