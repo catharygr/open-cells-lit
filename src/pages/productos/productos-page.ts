@@ -15,6 +15,10 @@ export class ProductosPage extends LitElement {
     img {
       width: 100px;
     }
+    .link {
+      text-decoration: underline;
+      cursor: pointer;
+    }
   `;
 
   @state() private _productos: any[] = [];
@@ -37,7 +41,15 @@ export class ProductosPage extends LitElement {
         </button>
         ${this._productos.map(
           (producto) => html`
-            <h3>${producto.title}</h3>
+            <h3
+              class="link"
+              @click="${() =>
+                this.pageController.navigate('producto', {
+                  productoId: producto.id,
+                })}"
+            >
+              ${producto.title}
+            </h3>
             <p>${producto.description}</p>
             <p>${producto.price}</p>
             <img src="${producto.image}" alt="${producto.title}" />
