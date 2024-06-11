@@ -57,14 +57,14 @@ export class ProductoPage extends LitElement {
   render() {
     return html`
       <div class="product-container">
-        <h3>${this._producto ? this._producto.title : ''}</h3>
-        <p>${this._producto ? this._producto.price : ''}</p>
-        <p>${this._producto ? this._producto.description : ''}</p>
-        <p>${this._producto ? this._producto.category : ''}</p>
         <img
           src="${this._producto ? this._producto.image : ''}"
           alt="${this._producto ? this._producto.title : ''}"
         />
+        <h3>${this._producto ? this._producto.title : ''}</h3>
+        <p>${this._producto ? this._producto.price : ''}</p>
+        <p>${this._producto ? this._producto.description : ''}</p>
+        <p>${this._producto ? this._producto.category : ''}</p>
       </div>
     `;
   }
