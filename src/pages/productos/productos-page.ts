@@ -19,15 +19,13 @@ export class ProductosPage extends LitElement {
 
   @state() private _productos: any[] = [];
 
-  connectedCallback(): void {
-    super.connectedCallback();
+  onPageEnter() {
     this.pageController.subscribe('ch_products', (data: any[]) => {
       this._productos = data;
     });
   }
 
-  disconnectedCallback(): void {
-    super.disconnectedCallback();
+  onPageLeave() {
     this.pageController.unsubscribe('ch_products');
   }
 
