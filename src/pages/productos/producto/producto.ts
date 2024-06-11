@@ -8,13 +8,26 @@ export class ProductoPage extends LitElement {
 
   static styles = css`
     .product-container {
-      padding: 2rem;
-      max-width: 600px;
-      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      gap: 1rem;
+      max-width: min(94vw, 55rem);
+      margin: 3rem auto;
     }
-    img {
-      width: 100px;
+
+    .product-container img {
+  width: 100%;
+  max-width: 20rem;
+  height: auto;
+}
     }
+
+    .product-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
     .link {
       text-decoration: underline;
       cursor: pointer;
@@ -61,10 +74,12 @@ export class ProductoPage extends LitElement {
           src="${this._producto ? this._producto.image : ''}"
           alt="${this._producto ? this._producto.title : ''}"
         />
-        <h3>${this._producto ? this._producto.title : ''}</h3>
-        <p>${this._producto ? this._producto.price : ''}</p>
-        <p>${this._producto ? this._producto.description : ''}</p>
-        <p>${this._producto ? this._producto.category : ''}</p>
+        <div class="product-details">
+          <h3>${this._producto ? this._producto.title : ''}</h3>
+          <p>${this._producto ? this._producto.price : ''}</p>
+          <p>${this._producto ? this._producto.description : ''}</p>
+          <p>${this._producto ? this._producto.category : ''}</p>
+        </div>
       </div>
     `;
   }
