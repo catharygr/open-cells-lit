@@ -11,6 +11,15 @@ export class ProductosPage extends LitElement {
       padding: 2rem;
       max-width: 600px;
       margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 2rem;
+    }
+    .product-card {
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 1rem;
+      text-align: center;
     }
     img {
       width: 100px;
@@ -35,24 +44,26 @@ export class ProductosPage extends LitElement {
 
   render() {
     return html`
+      <button @click="${() => this.pageController.navigate('home')}">
+        Go to home page
+      </button>
       <div class="products-container">
-        <button @click="${() => this.pageController.navigate('home')}">
-          Go to home page
-        </button>
         ${this._productos.map(
           (producto) => html`
-            <h3
-              class="link"
-              @click="${() =>
-                this.pageController.navigate('producto', {
-                  productoId: producto.id,
-                })}"
-            >
-              ${producto.title}
-            </h3>
-            <p>${producto.description}</p>
-            <p>${producto.price}</p>
-            <img src="${producto.image}" alt="${producto.title}" />
+            <div class="product-card">
+              <h3
+                class="link"
+                @click="${() =>
+                  this.pageController.navigate('producto', {
+                    productoId: producto.id,
+                  })}"
+              >
+                ${producto.title}
+              </h3>
+              <p>${producto.description}</p>
+              <p>${producto.price}</p>
+              <img src="${producto.image}" alt="${producto.title}" />
+            </div>
           `
         )}
       </div>
