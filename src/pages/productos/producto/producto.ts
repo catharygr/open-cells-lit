@@ -28,6 +28,17 @@ export class ProductoPage extends LitElement {
   flex-direction: column;
   gap: 0.5rem;
 }
+
+.product-details h3 {
+font-size: 1.5rem;
+  font-weight: 900;
+}
+  .product-price {
+   font-weight: 900;
+  }
+   .product-category {
+    color: gray;
+   }
    
   `;
 
@@ -67,11 +78,11 @@ export class ProductoPage extends LitElement {
   render() {
     return html`
       <div class="product-container">
-        <img
-          src="${this._producto ? this._producto.image : ''}"
-          alt="${this._producto ? this._producto.title : ''}"
-        />
         <div class="product-details">
+          <img
+            src="${this._producto ? this._producto.image : ''}"
+            alt="${this._producto ? this._producto.title : ''}"
+          />
           <h3>${this._producto ? this._producto.title : ''}</h3>
           <p class="product-price">
             ${this._producto ? this._producto.price : ''}
