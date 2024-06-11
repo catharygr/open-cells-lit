@@ -73,6 +73,7 @@ font-size: 1.5rem;
     this._producto = data.find(
       (producto) => producto.id === this.params.productoId
     );
+    window.scrollTo(0, 0);
   }
 
   render() {
