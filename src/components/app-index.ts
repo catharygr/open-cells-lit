@@ -21,6 +21,12 @@ startApp({
       // @ts-ignore
       redirect = { page: 'login', params: {} };
     }
+    // @ts-ignore
+    if (!ctx.logueado && navigation.to.page === 'producto') {
+      intercept = true;
+      // @ts-ignore
+      redirect = { page: 'login', params: {} };
+    }
 
     return { intercept, redirect };
   },

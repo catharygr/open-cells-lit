@@ -6,14 +6,25 @@ import { PageController } from '@open-cells/page-controller';
 export class LoginPage extends LitElement {
   controller = new PageController(this);
 
-  loguear() {
+  onPageEnter() {
+    this.controller.subscribe('__oc_intercepted_navigation', (data: any) => {
+      console.log(data);
+    });
+  }
+
+  loguearUsuario() {
     this.controller.updateInterceptorContext({ logueado: true });
     this.controller.navigate('usuario');
+  }
+  loguearProducto() {
+    this.controller.updateInterceptorContext({ logueado: true });
+    this.controller.navigate('productos');
   }
   render() {
     return html`
       <h1>Login page</h1>
-      <button @click=${this.loguear}>Loguear</button>
+      <button @click=${this.loguearUsuario}>Loguear usuario</button>
+      <button @click=${this.loguearProducto}>Loguear producto</button>
     `;
   }
 }
