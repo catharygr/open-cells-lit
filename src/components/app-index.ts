@@ -15,6 +15,13 @@ startApp({
   interceptor: function (navigation, ctx) {
     let intercept = false;
     let redirect: string | undefined;
+    // @ts-ignore
+    if (!ctx.logueado && navigation.to.page === 'usuario') {
+      intercept = true;
+      // @ts-ignore
+      redirect = { page: 'login', params: {} };
+    }
+
     return { intercept, redirect };
   },
 });
