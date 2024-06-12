@@ -1,7 +1,7 @@
 import { html, LitElement } from 'lit';
 import { PageController } from '@open-cells/page-controller';
 import { customElement } from 'lit/decorators.js';
-import '../../components/header.js';
+// import '../../components/header.ts';
 
 // @ts-ignore
 @customElement('home-page')
@@ -15,8 +15,8 @@ export class HomePage extends LitElement {
 
   render() {
     return html`
-      <header-component .pageController="${this.pageController}">
-      </header-component>
+      <!-- <header-component .pageController="${this.pageController}">
+      </header-component> -->
     `;
   }
 }
