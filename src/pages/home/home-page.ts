@@ -20,6 +20,12 @@ export class HomePage extends LitElement {
       <button @click="${() => this.pageController.navigate('contador')}">
         Go to contador page
       </button>
+      <button @click="${() => this.pageController.navigate('usuario')}">
+        Go to usuario page
+      </button>
+      <button @click="${() => this.pageController.navigate('login')}">
+        Go to login page
+      </button>
     `;
   }
 }

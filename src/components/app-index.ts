@@ -9,6 +9,14 @@ import data from '../data/db-backup.json';
 startApp({
   routes,
   mainNode: 'app-content',
+  viewLimit: 2,
+  persistentPages: ['home'],
+  // @ts-ignore
+  interceptor: function (navigation, ctx) {
+    let intercept = false;
+    let redirect: string | undefined;
+    return { intercept, redirect };
+  },
 });
 
 @customElement('app-index')

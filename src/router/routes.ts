@@ -34,6 +34,22 @@ export const routes: RouteDefinition[] = [
     },
   },
   {
+    path: '/usuario',
+    name: 'usuario',
+    component: 'usuario-page',
+    action: async () => {
+      await import('../pages/usuario/usuario-page.js');
+    },
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: 'login-page',
+    action: async () => {
+      await import('../pages/login/login-page.js');
+    },
+  },
+  {
     path: '/not-found',
     name: 'not-found',
     notFound: true,
