@@ -1,31 +1,22 @@
 import { html, LitElement } from 'lit';
 import { PageController } from '@open-cells/page-controller';
 import { customElement } from 'lit/decorators.js';
+import '../../components/Header.js';
 
 // @ts-ignore
 @customElement('home-page')
 export class HomePage extends LitElement {
   pageController = new PageController(this);
 
-  protected createRenderRoot(): HTMLElement | DocumentFragment {
-    // @ts-ignore
-    return this;
-  }
+  // protected createRenderRoot(): HTMLElement | DocumentFragment {
+  //   // @ts-ignore
+  //   return this;
+  // }
 
   render() {
     return html`
-      <button @click="${() => this.pageController.navigate('productos')}">
-        Go to productos page
-      </button>
-      <button @click="${() => this.pageController.navigate('contador')}">
-        Go to contador page
-      </button>
-      <button @click="${() => this.pageController.navigate('usuario')}">
-        Go to usuario page
-      </button>
-      <button @click="${() => this.pageController.navigate('login')}">
-        Go to login page
-      </button>
+      <header-component .pageController="${this.pageController}">
+      </header-component>
     `;
   }
 }
