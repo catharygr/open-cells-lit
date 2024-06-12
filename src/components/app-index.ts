@@ -5,7 +5,6 @@ import { ElementController } from '@open-cells/element-controller';
 import { routes } from '../router/routes.js';
 import { styles } from './app-index.css.js';
 import data from '../data/db-backup.json';
-import './header.js';
 
 startApp({
   routes,
@@ -46,7 +45,6 @@ export class AppIndex extends LitElement {
 
   render() {
     return html`
-      <header-component></header-component>
       <main role="main" tabindex="-1">
         <slot></slot>
       </main>
