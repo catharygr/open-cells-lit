@@ -8,6 +8,7 @@ export class LoginPage extends LitElement {
 
   loguear() {
     this.controller.updateInterceptorContext({ logueado: true });
+    this.controller.navigate('usuario');
   }
   render() {
     return html`
