@@ -115,7 +115,9 @@ export class HeaderComponent extends LitElement {
   render() {
     return html`
       <header>
-        <a href="/"> <img src="/images/favicon.svg" alt="Open Cells" />Open</a>
+        <a href="/">
+          <img src="/images/favicon.svg" alt="Open Cells" />Open Cells</a
+        >
         <mwc-icon @click="${this.toggleMenu}">menu</mwc-icon>
       </header>
       <div class="menu ${this.isOpen ? 'open' : ''}">
