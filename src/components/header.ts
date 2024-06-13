@@ -49,7 +49,7 @@ export class HeaderComponent extends LitElement {
     }
 
     .menu .close {
-      display: none;
+      display: block;
       position: absolute;
       top: 1rem;
       right: 1rem;
@@ -63,9 +63,9 @@ export class HeaderComponent extends LitElement {
     .menu.open mwc-icon:first-child {
       display: none;
     }
-    .menu.open .close {
-      display: block;
-    }
+    // .menu.open .close {
+    //   display: block;
+    // }
 
     .menu ul {
       list-style: none;
