@@ -117,10 +117,6 @@ export class HeaderComponent extends LitElement {
     this.pageController.publish('ch_favoritos', []);
   }
 
-  favoritos() {
-    this.pageController.publish('ch_favoritos', ['producto1', 'producto2']);
-  }
-
   render() {
     return html`
       <header>
@@ -173,6 +169,17 @@ export class HeaderComponent extends LitElement {
               }}"
             >
               Go to login page</a
+            >
+          </li>
+          <li>
+            <a
+              href="/input-publico-on"
+              @click="${(e: Event) => {
+                e.preventDefault();
+                this.pageController.navigate('input-publico-on');
+              }}"
+            >
+              Go to publico on page</a
             >
           </li>
         </ul>

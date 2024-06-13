@@ -50,23 +50,36 @@ font-size: 1.5rem;
   private _allProductos: any = [];
   @state()
   private _producto: any = {};
+  @state()
+  private _favoritos: any[] = [];
 
   connectedCallback(): void {
     super.connectedCallback();
     this.pageController.subscribe('ch_products', (data: any[]) => {
       this._allProductos = data;
     });
+    this.pageController.subscribe('ch_favoritos', (data: any[]) => {
+      this._favoritos = data;
+    });
   }
 
   disconnectedCallback(): void {
     super.disconnectedCallback();
     this.pageController.unsubscribe('ch_products');
+    this.pageController.unsubscribe('ch_favoritos');
   }
 
   updated(changedProperties: { has: (arg0: string) => any }) {
     if (changedProperties.has('params')) {
       this.actualizarProducto(this._allProductos);
     }
+  }
+
+  favoritos() {
+    this.pageController.publish('ch_favoritos', [
+      ...this._favoritos,
+      this._producto,
+    ]);
   }
 
   actualizarProducto(data: any[]) {
@@ -77,6 +90,7 @@ font-size: 1.5rem;
   }
 
   render() {
+    console.log(this._favoritos);
     return html`
       <div class="product-container">
         <div class="product-details">
@@ -93,7 +107,7 @@ font-size: 1.5rem;
             ${this._producto ? this._producto.category : ''}
           </p>
         </div>
-        <button>Add a favoritos</button>
+        <button @click="${this.favoritos}">Add a favoritos</button>
       </div>
     `;
   }
