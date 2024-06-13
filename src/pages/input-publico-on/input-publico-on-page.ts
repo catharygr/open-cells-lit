@@ -32,6 +32,9 @@ export class InputPublicoOnPage extends LitElement {
       <h1>Input público on</h1>
       <label for="nombre">Nombre</label>
       <input id="nombre" type="text" placeholder="Nombre" />
+      <label for="apellido">Apellido</label>
+      <input id="apellido" type="text" placeholder="Apellido" />
+      <p>Valor Apellido: ${this._valueApellido}</p>
       <p>Valor: ${this._value}</p>
     `;
   }
