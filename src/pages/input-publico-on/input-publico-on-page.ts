@@ -9,6 +9,8 @@ export class InputPublicoOnPage extends LitElement {
   @query('#nombre') _input!: HTMLInputElement;
   @state()
   private _value = '';
+  @query('#apellido') _inputApellido!: HTMLInputElement;
+  @state() private _valueApellido = '';
 
   firstUpdated() {
     this.pageController.subscribe('ch_name', (value: string) => {
@@ -16,6 +18,12 @@ export class InputPublicoOnPage extends LitElement {
     });
     this._input.addEventListener('input', () => {
       this.pageController.publish('ch_name', this._input.value);
+    });
+    this.pageController.subscribe('ch_apellido', (value: string) => {
+      this._valueApellido = value;
+    });
+    this._inputApellido.addEventListener('input', () => {
+      this.pageController.publish('ch_apellido', this._inputApellido.value);
     });
   }
 
