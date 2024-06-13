@@ -7,6 +7,8 @@ import '@material/mwc-icon';
 export class HeaderComponent extends LitElement {
   pageController = new PageController(this);
   @query('.menu') _menu!: HTMLElement;
+  @query('.close') _close!: HTMLElement;
+
   static styles = css`
     header {
       display: flex;
@@ -26,6 +28,7 @@ export class HeaderComponent extends LitElement {
       text-decoration: none;
       margin: 0 0.5rem;
       font-size: 2rem;
+      text-align: left;
     }
     a:hover {
       text-decoration: underline;
@@ -40,7 +43,7 @@ export class HeaderComponent extends LitElement {
       right: 0;
       width: 33.33%;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
+      background-color: rgba(0, 0, 0, 0.7);
       z-index: 1000;
       padding: 2rem;
       box-sizing: border-box;
@@ -98,7 +101,7 @@ export class HeaderComponent extends LitElement {
       }
       a {
         font-size: 1.5rem;
-        text-align: center;
+        text-align: right;
       }
       mwc-icon:first-child {
         position: absolute;
@@ -160,7 +163,7 @@ export class HeaderComponent extends LitElement {
         <mwc-icon @click="${this.toggleMenu}">menu</mwc-icon>
       </header>
       <div class="menu ${this.isOpen ? 'open' : ''}">
-        <mwc-icon class="close" @click="${this.toggleMenu}">close</mwc-icon>
+        <mwc-icon class="close" @click="${this.closeMenu}">close</mwc-icon>
         <ul>
           <li>
             <a
@@ -169,7 +172,8 @@ export class HeaderComponent extends LitElement {
                 e.preventDefault();
                 this.pageController.navigate('productos');
               }}"
-              >Go to productos page</a
+            >
+              Productos</a
             >
           </li>
           <li>
@@ -180,7 +184,7 @@ export class HeaderComponent extends LitElement {
                 this.pageController.navigate('contador');
               }}"
             >
-              Go to contador page</a
+              Contador</a
             >
           </li>
           <li>
@@ -191,7 +195,7 @@ export class HeaderComponent extends LitElement {
                 this.pageController.navigate('usuario');
               }}"
             >
-              Go to usuario page</a
+              Usuario</a
             >
           </li>
           <li>
@@ -202,7 +206,7 @@ export class HeaderComponent extends LitElement {
                 this.pageController.navigate('login');
               }}"
             >
-              Go to login page</a
+              Login</a
             >
           </li>
           <li>
@@ -213,7 +217,7 @@ export class HeaderComponent extends LitElement {
                 this.pageController.navigate('input-publico-on');
               }}"
             >
-              Go to publico on page</a
+              Público</a
             >
           </li>
         </ul>
