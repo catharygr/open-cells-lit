@@ -22,6 +22,7 @@ export class InputPublicoOnPage extends LitElement {
     }
     label {
       text-align: left;
+      margin: 0;
     }
   `;
 
