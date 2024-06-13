@@ -1,5 +1,5 @@
 import { LitElement, html, css } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { customElement, property, state } from 'lit/decorators.js';
 import { PageController } from '@open-cells/page-controller';
 import '@material/mwc-icon';
 
@@ -111,17 +111,28 @@ export class HeaderComponent extends LitElement {
   }
 
   @property({ type: Boolean }) isOpen = false;
+  @state() private _name = '';
 
   connectedCallback(): void {
     super.connectedCallback();
     this.pageController.publish('ch_favoritos', []);
+    this.pageController.subscribe('ch_name', (value: string) => {
+      this._name = value;
+    });
   }
 
   render() {
     return html`
       <header>
-        <a href="/">
-          <img src="/images/favicon.svg" alt="Open Cells" />Open Cells</a
+        <a
+          href="/"
+          @click="${(e: Event) => {
+            e.preventDefault();
+            this.pageController.navigate('home');
+          }}"
+        >
+          <img src="/images/favicon.svg" alt="Open Cells" /> Open Cells:
+          ${this._name}</a
         >
         <mwc-icon @click="${this.toggleMenu}">menu</mwc-icon>
       </header>
