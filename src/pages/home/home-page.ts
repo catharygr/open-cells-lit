@@ -1,4 +1,4 @@
-import { html, LitElement } from 'lit';
+import { html, LitElement, css } from 'lit';
 import { PageController } from '@open-cells/page-controller';
 import { customElement, state } from 'lit/decorators.js';
 // import '../../components/header.ts';
@@ -8,10 +8,15 @@ import { customElement, state } from 'lit/decorators.js';
 export class HomePage extends LitElement {
   pageController = new PageController(this);
 
-  protected createRenderRoot(): HTMLElement | DocumentFragment {
-    // @ts-ignore
-    return this;
-  }
+  static styles = css`
+    .container-home {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin 5rem auto;
+    }
+  `;
 
   @state()
   private _value = '';
@@ -25,8 +30,10 @@ export class HomePage extends LitElement {
 
   render() {
     return html`
-      <h1>Home Page</h1>
-      <p>El valor del input: ${this._value}</p>
+      <div class="container-home">
+        <h1>Home Page</h1>
+        <p>El valor del input: ${this._value}</p>
+      </div>
     `;
   }
 }
