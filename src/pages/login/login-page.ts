@@ -1,4 +1,4 @@
-import { LitElement, html } from 'lit';
+import { LitElement, html, css } from 'lit';
 import { customElement } from 'lit/decorators.js';
 import { PageController } from '@open-cells/page-controller';
 
@@ -12,6 +12,15 @@ export class LoginPage extends LitElement {
     });
   }
 
+  static styles = css` 
+    .container-login {
+      display: flex;  
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin 5rem auto;
+      }`;
+
   loguearUsuario() {
     this.controller.updateInterceptorContext({ logueado: true });
     this.controller.navigate('usuario');
@@ -22,9 +31,15 @@ export class LoginPage extends LitElement {
   }
   render() {
     return html`
-      <h1>Login page</h1>
-      <button @click=${this.loguearUsuario}>Loguear usuario</button>
-      <button @click=${this.loguearProducto}>Loguear producto</button>
+      <div class="container-login">
+        <h1>Login page</h1>
+        <button class="btn=login" @click=${this.loguearUsuario}>
+          Loguear usuario
+        </button>
+        <button class="btn=login" @click=${this.loguearProducto}>
+          Loguear producto
+        </button>
+      </div>
     `;
   }
 }

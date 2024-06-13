@@ -1,11 +1,12 @@
 import { LitElement, html, css } from 'lit';
-import { customElement, property, state } from 'lit/decorators.js';
+import { customElement, property, state, query } from 'lit/decorators.js';
 import { PageController } from '@open-cells/page-controller';
 import '@material/mwc-icon';
 
 @customElement('header-component')
 export class HeaderComponent extends LitElement {
   pageController = new PageController(this);
+  @query('.menu') _menu!: HTMLElement;
   static styles = css`
     header {
       display: flex;
@@ -34,10 +35,10 @@ export class HeaderComponent extends LitElement {
     }
     .menu {
       display: none;
-      position: relative;
+      position: fixed;
       top: 0;
       right: 0;
-      width: 100%;
+      width: 33.33%;
       height: 100%;
       background-color: rgba(0, 0, 0, 0.5);
       z-index: 1000;
@@ -118,11 +119,24 @@ export class HeaderComponent extends LitElement {
   @property({ type: Boolean }) isOpen = false;
   @state() private _name = '';
 
+  closeMenu() {
+    this.isOpen = false;
+    this.requestUpdate();
+  }
+
   connectedCallback(): void {
     super.connectedCallback();
     this.pageController.publish('ch_favoritos', []);
     this.pageController.subscribe('ch_name', (value: string) => {
       this._name = value;
+    });
+  }
+  firstUpdated() {
+    const links = this._menu.querySelectorAll('a');
+    links.forEach((link) => {
+      link.addEventListener('click', () => {
+        this.closeMenu();
+      });
     });
   }
 
