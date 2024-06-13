@@ -67,12 +67,11 @@ export class ProductosPage extends LitElement {
     this.pageController.unsubscribe('ch_products');
   }
 
-  productoSeleccionado(producto: any) {
-    this.pageController.publish('ch_producto_seleccionado', producto);
-  }
-
   render() {
     return html`
+      <!-- <button @click="${() => this.pageController.navigate('home')}">
+        Go to home page
+      </button> -->
       <div class="products-container">
         ${this._productos.map(
           (producto) => html`
