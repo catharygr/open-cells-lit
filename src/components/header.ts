@@ -15,6 +15,11 @@ export class HeaderComponent extends LitElement {
       color: white;
       padding: 2rem;
     }
+
+    img {
+      width: 2rem;
+      height: 2rem;
+    }
     a {
       color: white;
       text-decoration: none;
@@ -131,8 +136,12 @@ export class HeaderComponent extends LitElement {
             this.pageController.navigate('home');
           }}"
         >
-          <img src="/images/favicon.svg" alt="Open Cells" /> Open Cells:
-          ${this._name}</a
+          <img
+            class="img-open-cells"
+            src="/images/favicon.svg"
+            alt="Open Cells"
+          />
+          Open Cells: ${this._name}</a
         >
         <mwc-icon @click="${this.toggleMenu}">menu</mwc-icon>
       </header>

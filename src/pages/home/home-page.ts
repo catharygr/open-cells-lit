@@ -1,7 +1,6 @@
 import { html, LitElement, css } from 'lit';
 import { PageController } from '@open-cells/page-controller';
 import { customElement, state } from 'lit/decorators.js';
-// import '../../components/header.ts';
 
 // @ts-ignore
 @customElement('home-page')
