@@ -29,7 +29,7 @@ export class HeaderComponent extends LitElement {
     }
     .menu {
       display: none;
-      position: absolute;
+      position: relative;
       top: 0;
       right: 0;
       width: 100%;
@@ -111,6 +111,15 @@ export class HeaderComponent extends LitElement {
   }
 
   @property({ type: Boolean }) isOpen = false;
+
+  connectedCallback(): void {
+    super.connectedCallback();
+    this.pageController.publish('ch_favoritos', []);
+  }
+
+  favoritos() {
+    this.pageController.publish('ch_favoritos', ['producto1', 'producto2']);
+  }
 
   render() {
     return html`

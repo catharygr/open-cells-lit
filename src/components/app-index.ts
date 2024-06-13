@@ -10,27 +10,27 @@ import './header.js';
 startApp({
   routes,
   mainNode: 'app-content',
-  viewLimit: 2,
-  persistentPages: ['home'],
+  // viewLimit: 2,
+  // persistentPages: ['home'],
   // @ts-ignore
-  interceptor: function (navigation, ctx) {
-    let intercept = false;
-    let redirect: string | undefined;
-    // @ts-ignore
-    if (!ctx.logueado && navigation.to.page === 'usuario') {
-      intercept = true;
-      // @ts-ignore
-      redirect = { page: 'login', params: {} };
-    }
-    // @ts-ignore
-    if (!ctx.logueado && navigation.to.page === 'producto') {
-      intercept = true;
-      // @ts-ignore
-      redirect = { page: 'login', params: {} };
-    }
+  // interceptor: function (navigation, ctx) {
+  //   let intercept = false;
+  //   let redirect: string | undefined;
+  //   // @ts-ignore
+  //   if (!ctx.logueado && navigation.to.page === 'usuario') {
+  //     intercept = true;
+  //     // @ts-ignore
+  //     redirect = { page: 'login', params: {} };
+  //   }
+  //   // @ts-ignore
+  //   if (!ctx.logueado && navigation.to.page === 'producto') {
+  //     intercept = true;
+  //     // @ts-ignore
+  //     redirect = { page: 'login', params: {} };
+  //   }
 
-    return { intercept, redirect };
-  },
+  //   return { intercept, redirect };
+  // },
 });
 
 @customElement('app-index')

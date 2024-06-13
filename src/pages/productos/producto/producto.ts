@@ -93,6 +93,7 @@ font-size: 1.5rem;
             ${this._producto ? this._producto.category : ''}
           </p>
         </div>
+        <button>Add a favoritos</button>
       </div>
     `;
   }

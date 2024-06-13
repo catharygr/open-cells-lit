@@ -15,8 +15,7 @@ export class HomePage extends LitElement {
 
   render() {
     return html`
-      <!-- <header-component .pageController="${this.pageController}">
-      </header-component> -->
+     h1>Home Page</h1>
     `;
   }
 }
