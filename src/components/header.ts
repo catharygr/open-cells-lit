@@ -29,7 +29,7 @@ export class HeaderComponent extends LitElement {
     }
     .menu {
       display: none;
-      position: relative;
+      position: absolute;
       top: 0;
       right: 0;
       width: 100%;
