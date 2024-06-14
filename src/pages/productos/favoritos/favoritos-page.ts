@@ -1,10 +1,26 @@
-import { LitElement, html } from 'lit';
+import { LitElement, html, css } from 'lit';
 import { customElement, state } from 'lit/decorators.js';
 import { PageController } from '@open-cells/page-controller';
 
 @customElement('favoritos-page')
 export class FavoritosPage extends LitElement {
   pageController = new PageController(this);
+
+  static styles = css`
+    .container-favoritos {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 5rem auto;
+    }
+    .productos {
+      border: 1px solid #ccc;
+      padding: 1rem;
+      margin: 1rem;
+      border-radius: 5px;
+    }
+  `;
 
   @state()
   private _favoritos: any[] = [];
@@ -23,18 +39,23 @@ export class FavoritosPage extends LitElement {
 
   render() {
     return html`
-      <h1>Favoritos</h1>
-      ${this._favoritos.map(
-        (favorito) => html`
-          <div>
-            <h2>${favorito.title}</h2>
-            <p>${favorito.description}</p>
-            <button @click=${() => this.removeFavorito(favorito.id)}>
-              Eliminar
-            </button>
-          </div>
-        `
-      )}
+      <div class="container-favoritos">
+        <h1>Favoritos</h1>
+        ${this._favoritos.map(
+          (favorito) => html`
+            <div class="productos">
+              <h2>${favorito.title}</h2>
+              <p>${favorito.description}</p>
+              <button
+                class="btn-favoritos"
+                @click=${() => this.removeFavorito(favorito.id)}
+              >
+                Eliminar
+              </button>
+            </div>
+          `
+        )}
+      </div>
     `;
   }
 }
