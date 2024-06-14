@@ -20,6 +20,14 @@ export class FavoritosPage extends LitElement {
       margin: 1rem;
       border-radius: 5px;
     }
+    .btn-favoritos {
+      padding: 0.5rem;
+      border: none;
+      background-color: red;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
   `;
 
   @state()
