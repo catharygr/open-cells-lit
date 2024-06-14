@@ -11,7 +11,7 @@ export class FavoritosPage extends LitElement {
 
   connectedCallback(): void {
     super.connectedCallback();
-    this.pageController.subscribe('ch_favoritos', (data: any[]) => {
+    this.pageController.subscribe('ch_favs', (data: any[]) => {
       this._favoritos = data;
       console.log(data);
     });
