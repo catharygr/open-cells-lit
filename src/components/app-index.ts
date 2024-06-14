@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { startApp } from '@open-cells/core';
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators.js';
@@ -10,27 +11,27 @@ import './header.js';
 startApp({
   routes,
   mainNode: 'app-content',
-  // viewLimit: 2,
-  // persistentPages: ['home'],
-  // @ts-ignore
-  // interceptor: function (navigation, ctx) {
-  //   let intercept = false;
-  //   let redirect: string | undefined;
-  //   // @ts-ignore
-  //   if (!ctx.logueado && navigation.to.page === 'usuario') {
-  //     intercept = true;
-  //     // @ts-ignore
-  //     redirect = { page: 'login', params: {} };
-  //   }
-  //   // @ts-ignore
-  //   if (!ctx.logueado && navigation.to.page === 'producto') {
-  //     intercept = true;
-  //     // @ts-ignore
-  //     redirect = { page: 'login', params: {} };
-  //   }
+  viewLimit: 2,
+  persistentPages: ['home'],
 
-  //   return { intercept, redirect };
-  // },
+  interceptor: function (navigation, ctx) {
+    let intercept = false;
+    let redirect: string | undefined;
+
+    if (!ctx.logueado && navigation.to.page === 'usuario') {
+      intercept = true;
+
+      redirect = { page: 'login', params: {} };
+    }
+
+    if (!ctx.logueado && navigation.to.page === 'producto') {
+      intercept = true;
+
+      redirect = { page: 'login', params: {} };
+    }
+
+    return { intercept, redirect };
+  },
 });
 
 @customElement('app-index')

@@ -69,9 +69,6 @@ export class ProductosPage extends LitElement {
 
   render() {
     return html`
-      <!-- <button @click="${() => this.pageController.navigate('home')}">
-        Go to home page
-      </button> -->
       <div class="products-container">
         ${this._productos.map(
           (producto) => html`
