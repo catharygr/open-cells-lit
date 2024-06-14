@@ -169,6 +169,17 @@ export class HeaderComponent extends LitElement {
             </li>
             <li>
               <a
+                href="/favoritos"
+                @click="${(e: Event) => {
+                  e.preventDefault();
+                  this.pageController.navigate('favoritos');
+                }}"
+              >
+                Favoritos</a
+              >
+            </li>
+            <li>
+              <a
                 href="/contador"
                 @click="${(e: Event) => {
                   e.preventDefault();

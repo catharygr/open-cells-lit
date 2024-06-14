@@ -41,6 +41,22 @@ export class AppIndex extends LitElement {
   connectedCallback(): void {
     super.connectedCallback();
     this.elementController.publish('ch_products', data.products);
+    this.elementController.publish('ch_favoritos', [
+      {
+        id: '40',
+        title: 'favorito 1',
+        description: 'Descripcion del producto 1',
+      },
+      {
+        id: '50',
+        title: 'favorito 2',
+        description: 'Descripcion del producto 2',
+      },
+    ]);
+
+    this.elementController.subscribe('ch_favoritos', (data: any[]) => {
+      this._favoritos = data;
+    });
   }
 
   static styles = styles;

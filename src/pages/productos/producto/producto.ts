@@ -58,9 +58,6 @@ font-size: 1.5rem;
     this.pageController.subscribe('ch_products', (data: any[]) => {
       this._allProductos = data;
     });
-    this.pageController.subscribe('ch_favoritos', (data: any[]) => {
-      this._favoritos = data;
-    });
   }
 
   disconnectedCallback(): void {

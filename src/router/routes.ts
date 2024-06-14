@@ -26,6 +26,14 @@ export const routes: RouteDefinition[] = [
     },
   },
   {
+    path: '/favoritos',
+    name: 'favoritos',
+    component: 'favoritos-page',
+    action: async () => {
+      await import('../pages/productos/favoritos/favoritos-page.js');
+    },
+  },
+  {
     path: '/contador',
     name: 'contador',
     component: 'contador-page',
