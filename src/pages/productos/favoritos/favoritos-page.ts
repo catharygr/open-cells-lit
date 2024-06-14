@@ -16,6 +16,11 @@ export class FavoritosPage extends LitElement {
     });
   }
 
+  removeFavorito(id: string): void {
+    this._favoritos = this._favoritos.filter((favorito) => favorito.id !== id);
+    this.pageController.publish('ch_favs', this._favoritos);
+  }
+
   render() {
     return html`
       <h1>Favoritos</h1>
@@ -24,6 +29,9 @@ export class FavoritosPage extends LitElement {
           <div>
             <h2>${favorito.title}</h2>
             <p>${favorito.description}</p>
+            <button @click=${() => this.removeFavorito(favorito.id)}>
+              Eliminar
+            </button>
           </div>
         `
       )}
