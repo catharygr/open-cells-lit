@@ -13,6 +13,7 @@ export class FavoritosPage extends LitElement {
     super.connectedCallback();
     this.pageController.subscribe('ch_favoritos', (data: any[]) => {
       this._favoritos = data;
+      console.log(data);
     });
   }
 
