@@ -43,7 +43,7 @@ export class HeaderComponent extends LitElement {
       right: 0;
       width: 33.33%;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0.7);
+      background-color: rgba(0, 0, 0, 0.8);
       z-index: 1000;
       padding: 2rem;
       box-sizing: border-box;
@@ -60,8 +60,8 @@ export class HeaderComponent extends LitElement {
     .menu .close {
       display: block;
       position: absolute;
-      top: 1rem;
-      right: 1rem;
+      top: 2rem;
+      right: 2rem;
       cursor: pointer;
     }
 
@@ -69,12 +69,9 @@ export class HeaderComponent extends LitElement {
       display: block;
     }
 
-    .menu.open mwc-icon:first-child {
-      display: none;
+    .menu.open .close {
+      display: block;
     }
-    // .menu.open .close {
-    //   display: block;
-    // }
 
     .menu ul {
       list-style: none;
@@ -103,27 +100,22 @@ export class HeaderComponent extends LitElement {
         font-size: 1.5rem;
         text-align: right;
       }
-      mwc-icon:first-child {
-        position: absolute;
-        left: 2rem;
-      }
-      mwc-icon:last-child {
-        position: absolute;
-        right: 2rem;
-      }
+      // mwc-icon:first-child {
+      //   position: absolute;
+      //   left: 2rem;
+      // }
+      // mwc-icon:last-child {
+      //   position: absolute;
+      //   right: 2rem;
+      // }
     }
   `;
-
-  toggleMenu() {
-    this.isOpen = !this.isOpen;
-    this.requestUpdate();
-  }
 
   @property({ type: Boolean }) isOpen = false;
   @state() private _name = '';
 
-  closeMenu() {
-    this.isOpen = false;
+  toggleMenu() {
+    this.isOpen = !this.isOpen;
     this.requestUpdate();
   }
 
@@ -138,7 +130,7 @@ export class HeaderComponent extends LitElement {
     const links = this._menu.querySelectorAll('a');
     links.forEach((link) => {
       link.addEventListener('click', () => {
-        this.closeMenu();
+        this.toggleMenu();
       });
     });
   }
@@ -161,67 +153,67 @@ export class HeaderComponent extends LitElement {
           Open Cells: ${this._name}</a
         >
         <mwc-icon @click="${this.toggleMenu}">menu</mwc-icon>
+        <div class="menu ${this.isOpen ? 'open' : ''}">
+          <mwc-icon class="close" @click="${this.toggleMenu}">close</mwc-icon>
+          <ul>
+            <li>
+              <a
+                href="/productos"
+                @click="${(e: Event) => {
+                  e.preventDefault();
+                  this.pageController.navigate('productos');
+                }}"
+              >
+                Productos</a
+              >
+            </li>
+            <li>
+              <a
+                href="/contador"
+                @click="${(e: Event) => {
+                  e.preventDefault();
+                  this.pageController.navigate('contador');
+                }}"
+              >
+                Contador</a
+              >
+            </li>
+            <li>
+              <a
+                href="/usuario"
+                @click="${(e: Event) => {
+                  e.preventDefault();
+                  this.pageController.navigate('usuario');
+                }}"
+              >
+                Usuario</a
+              >
+            </li>
+            <li>
+              <a
+                href="/usuario"
+                @click="${(e: Event) => {
+                  e.preventDefault();
+                  this.pageController.navigate('login');
+                }}"
+              >
+                Login</a
+              >
+            </li>
+            <li>
+              <a
+                href="/input-publico-on"
+                @click="${(e: Event) => {
+                  e.preventDefault();
+                  this.pageController.navigate('input-publico-on');
+                }}"
+              >
+                Público</a
+              >
+            </li>
+          </ul>
+        </div>
       </header>
-      <div class="menu ${this.isOpen ? 'open' : ''}">
-        <mwc-icon class="close" @click="${this.closeMenu}">close</mwc-icon>
-        <ul>
-          <li>
-            <a
-              href="/productos"
-              @click="${(e: Event) => {
-                e.preventDefault();
-                this.pageController.navigate('productos');
-              }}"
-            >
-              Productos</a
-            >
-          </li>
-          <li>
-            <a
-              href="/contador"
-              @click="${(e: Event) => {
-                e.preventDefault();
-                this.pageController.navigate('contador');
-              }}"
-            >
-              Contador</a
-            >
-          </li>
-          <li>
-            <a
-              href="/usuario"
-              @click="${(e: Event) => {
-                e.preventDefault();
-                this.pageController.navigate('usuario');
-              }}"
-            >
-              Usuario</a
-            >
-          </li>
-          <li>
-            <a
-              href="/usuario"
-              @click="${(e: Event) => {
-                e.preventDefault();
-                this.pageController.navigate('login');
-              }}"
-            >
-              Login</a
-            >
-          </li>
-          <li>
-            <a
-              href="/input-publico-on"
-              @click="${(e: Event) => {
-                e.preventDefault();
-                this.pageController.navigate('input-publico-on');
-              }}"
-            >
-              Público</a
-            >
-          </li>
-        </ul>
-      </div>
     `;
   }
 }
