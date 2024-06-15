@@ -8,16 +8,22 @@ interface Task {
 @customElement('todo-item')
 export class TodoItem extends LitElement {
   static styles = css`
-    .todo-item {
+    :host {
       display: flex;
       flex-direction: column;
       align-items: center;
-      background-color: #f1f1f1;
-      padding: 1rem;
-      border-radius: 5px;
+    }
+    .todo-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      // width: 100%;
+      // border: 1px solid #ccc;
+      // padding: 10px;
+      // margin-top: 10px;
     }
     button {
-      margin: 1rem;
+      // margin-left: 10px;
     }
   `;
   @property({ type: Object }) task: Task = { title: '' };

@@ -9,31 +9,36 @@ export class TodoListPage extends LitElement {
   @property({ type: Array }) tasks: Task[] = [];
 
   static styles = css`
-    .form-todo {
+    :host {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
-      marrgin: 5rem;
-    }
-    // .todo-list {
-    //   display: flex;
-    //   justify-content: center;
-    //   gap: 1rem;
-    // }
-    form {
-      display: flex;
-      gap: 1rem;
-    }
-    input {
-      flex: 1;
-    }
-    .todo-item {
-      display: flex;
-      flex-direction: column;
-
-      padding: 1rem;
+      align-items: center;
+      margin: 5rem auto;
+      width: 50%;
+      height: 50vh;
+      border: 1px solid #ccc;
+      padding: 2rem;
+      background-color: gray;
       border-radius: 5px;
     }
+    input, button {
+      padding: 0.5rem 1.5rem;
+      border: none;
+      border-radius: 5px;
+      text-align: left;
+    }
+
+    .todo-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-top: 10px;
+    }
+  {
+     
   `;
 
   connectedCallback() {
