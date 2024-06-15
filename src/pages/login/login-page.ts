@@ -6,12 +6,6 @@ import { PageController } from '@open-cells/page-controller';
 export class LoginPage extends LitElement {
   controller = new PageController(this);
 
-  onPageEnter() {
-    this.controller.subscribe('__oc_intercepted_navigation', (data: any) => {
-      console.log(data);
-    });
-  }
-
   static styles = css` 
     .container-login {
       display: flex;  
