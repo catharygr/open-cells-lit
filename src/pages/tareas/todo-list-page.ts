@@ -1,8 +1,11 @@
 import { LitElement, css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { PageController } from '@open-cells/page-controller';
-import { Task } from './todo-item'; // Import the Task type from the correct file path
 import './todo-item';
+
+interface Task {
+  title: string;
+}
 
 @customElement('todo-list-page')
 export class TodoListPage extends LitElement {
