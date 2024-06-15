@@ -1,5 +1,5 @@
 import { LitElement, html, css } from 'lit';
-import { customElement, property, state, query } from 'lit/decorators.js';
+import { customElement, property, query, state } from 'lit/decorators.js';
 import { PageController } from '@open-cells/page-controller';
 import '@material/mwc-icon';
 
@@ -92,6 +92,13 @@ export class HeaderComponent extends LitElement {
       display: block;
       font-size: 2rem;
     }
+    .use-name {
+      margin-left: auto;
+      margin-right: 2rem;
+      font-size: 1.5rem;
+      margin-block: 0;
+      padding: 0;
+    }
     @media (max-width: 48rem) {
       header {
         justify-content: space-between;
@@ -112,7 +119,7 @@ export class HeaderComponent extends LitElement {
   `;
 
   @property({ type: Boolean }) isOpen = false;
-  @state() private _name = '';
+  @state() private _userNombre = '';
 
   toggleMenu() {
     this.isOpen = !this.isOpen;
@@ -122,8 +129,8 @@ export class HeaderComponent extends LitElement {
   connectedCallback(): void {
     super.connectedCallback();
     this.pageController.publish('ch_favoritos', []);
-    this.pageController.subscribe('ch_name', (value: string) => {
-      this._name = value;
+    this.pageController.subscribe('ch_user', (data: any) => {
+      this._userNombre = data.nombre;
     });
   }
   firstUpdated() {
@@ -150,8 +157,9 @@ export class HeaderComponent extends LitElement {
             src="/images/favicon.svg"
             alt="Open Cells"
           />
-          Open Cells: ${this._name}</a
+          Open Cells</a
         >
+        <p class="use-name">Hola ${this._userNombre}</p>
         <mwc-icon @click="${this.toggleMenu}">menu</mwc-icon>
         <div class="menu ${this.isOpen ? 'open' : ''}">
           <mwc-icon class="close" @click="${this.toggleMenu}">close</mwc-icon>

@@ -63,7 +63,7 @@ export class UsuarioPage extends LitElement {
     });
   }
 
-  publicarDatos(e) {
+  publicarDatos(e: Event) {
     e.preventDefault();
     this.controller.publish('ch_user', this.formData);
   }
