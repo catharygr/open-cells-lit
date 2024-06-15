@@ -12,7 +12,6 @@ export class FavoritosPage extends LitElement {
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      margin: 5rem auto;
     }
     .productos {
       border: 1px solid #ccc;

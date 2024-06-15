@@ -219,17 +219,6 @@ export class HeaderComponent extends LitElement {
                 Login</a
               >
             </li>
-            <li>
-              <a
-                href="/input-publico-on"
-                @click="${(e: Event) => {
-                  e.preventDefault();
-                  this.pageController.navigate('input-publico-on');
-                }}"
-              >
-                Público</a
-              >
-            </li>
           </ul>
         </div>
       </header>
