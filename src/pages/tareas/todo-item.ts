@@ -1,8 +1,9 @@
 import { LitElement } from 'lit';
-import { customElement } from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
 
 @customElement('todo-item')
 export class TodoItem extends LitElement {
+  @property({ type: Array }) todoList = [];
   render() {
     return `
       <div class="todo-list">

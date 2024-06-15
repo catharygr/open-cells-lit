@@ -1,8 +1,15 @@
 import { LitElement, css, html } from 'lit';
-import { customElement } from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
+import { PageController } from '@open-cells/page-controller';
 
 @customElement('todo-list-page')
 export class TodoListPage extends LitElement {
+  pageController = new PageController(this);
+  @property({ type: Array }) todoList = [
+    { id: 1, title: 'Task 1', description: 'Do this' },
+    { id: 2, title: 'Task 2', description: 'Do that' },
+  ];
+
   static styles = css`
     .container-todo-list {
       display: flex;
@@ -25,6 +32,16 @@ export class TodoListPage extends LitElement {
       cursor: pointer;
     }
   `;
+
+  connectedCallback(): void {
+    super.connectedCallback();
+    this.pageController.subscribe('ch_todoList', (todoList: any[]) => {
+      this.todoList = [
+        ...todoList,
+        { id: 3, title: 'Task 3', description: 'Do something else' },
+      ];
+    });
+  }
 
   render() {
     return html`
