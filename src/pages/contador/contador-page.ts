@@ -74,9 +74,6 @@ export class ContadorPage extends LitElement {
   render() {
     return html`
       <div class="container-contador">
-        <button @click="${() => this.pageController.navigate('home')}">
-          Go to home page
-        </button>
         <div class="contador">
           <h1>Contador</h1>
           <div>
