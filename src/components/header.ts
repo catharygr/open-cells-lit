@@ -107,14 +107,6 @@ export class HeaderComponent extends LitElement {
         font-size: 1.5rem;
         text-align: right;
       }
-      // mwc-icon:first-child {
-      //   position: absolute;
-      //   left: 2rem;
-      // }
-      // mwc-icon:last-child {
-      //   position: absolute;
-      //   right: 2rem;
-      // }
     }
   `;
 
