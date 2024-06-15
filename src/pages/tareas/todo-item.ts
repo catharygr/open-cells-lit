@@ -1,25 +1,17 @@
-import { LitElement, html } from 'lit';
+import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-
-interface Todo {
-  title: string;
-  description: string;
-}
 
 @customElement('todo-item')
 export class TodoItem extends LitElement {
-  @property({ type: Array }) todoList: Todo[] = [];
+  static styles = css`
+    .todo-item {
+      background-color: #f1f1f1;
+      padding: 1rem;
+      border-radius: 5px;
+    }
+  `;
+  @property({ type: Object }) task = {};
   render() {
-    return html`
-      <div class="todo-list">
-        ${this.todoList.map(
-          (todo: Todo) => html`
-            <h2>${todo.title}</h2>
-            <p>${todo.description}</p>
-            <button class="btn-todo-list">Delete</button>
-          `
-        )}
-      </div>
-    `;
+    return html` <div class="todo-item">${this.task}</div> `;
   }
 }
