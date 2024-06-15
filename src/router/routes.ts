@@ -58,6 +58,14 @@ export const routes: RouteDefinition[] = [
     },
   },
   {
+    path: '/tareas',
+    name: 'tareas',
+    component: 'todo-list-page',
+    action: async () => {
+      await import('../pages/tareas/todo-list-page.js');
+    },
+  },
+  {
     path: '/not-found',
     name: 'not-found',
     notFound: true,
