@@ -14,47 +14,34 @@ startApp({
   viewLimit: 2,
   persistentPages: ['home'],
 
-  interceptor: function (navigation, ctx) {
-    let intercept = false;
-    let redirect: string | undefined;
+  // interceptor: function (navigation, ctx) {
+  //   let intercept = false;
+  //   let redirect: string | undefined;
 
-    if (!ctx.logueado && navigation.to.page === 'usuario') {
-      intercept = true;
+  //   if (!ctx.logueado && navigation.to.page === 'usuario') {
+  //     intercept = true;
 
-      redirect = { page: 'login', params: {} };
-    }
+  //     redirect = { page: 'login', params: {} };
+  //   }
 
-    if (!ctx.logueado && navigation.to.page === 'producto') {
-      intercept = true;
+  //   if (!ctx.logueado && navigation.to.page === 'producto') {
+  //     intercept = true;
 
-      redirect = { page: 'login', params: {} };
-    }
+  //     redirect = { page: 'login', params: {} };
+  //   }
 
-    return { intercept, redirect };
-  },
+  //   return { intercept, redirect };
+  // },
 });
 
 @customElement('app-index')
 export class AppIndex extends LitElement {
   elementController = new ElementController(this);
 
-  @state() private _dataFavoritas: any[] = [
-    {
-      id: '40',
-      title: 'favorito 1',
-      description: 'Descripcion del producto 1',
-    },
-    {
-      id: '50',
-      title: 'favorito 2',
-      description: 'Descripcion del producto 2',
-    },
-  ];
-
   connectedCallback(): void {
     super.connectedCallback();
     this.elementController.publish('ch_products', data.products);
-    this.elementController.publish('ch_favs', this._dataFavoritas);
+    this.elementController.publish('ch_favs', []);
   }
 
   static styles = styles;
