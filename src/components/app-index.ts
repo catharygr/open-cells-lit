@@ -14,24 +14,24 @@ startApp({
   viewLimit: 2,
   persistentPages: ['home'],
 
-  interceptor: function (navigation, ctx) {
-    let intercept = false;
-    let redirect: string | undefined;
+  // interceptor: function (navigation, ctx) {
+  //   let intercept = false;
+  //   let redirect: string | undefined;
 
-    if (!ctx.logueado && navigation.to.page === 'usuario') {
-      intercept = true;
+  //   if (!ctx.logueado && navigation.to.page === 'usuario') {
+  //     intercept = true;
 
-      redirect = { page: 'login', params: {} };
-    }
+  //     redirect = { page: 'login', params: {} };
+  //   }
 
-    if (!ctx.logueado && navigation.to.page === 'producto') {
-      intercept = true;
+  //   if (!ctx.logueado && navigation.to.page === 'producto') {
+  //     intercept = true;
 
-      redirect = { page: 'login', params: {} };
-    }
+  //     redirect = { page: 'login', params: {} };
+  //   }
 
-    return { intercept, redirect };
-  },
+  //   return { intercept, redirect };
+  // },
 });
 
 @customElement('app-index')
