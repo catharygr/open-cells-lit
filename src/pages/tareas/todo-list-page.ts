@@ -1,6 +1,7 @@
 import { LitElement, css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { PageController } from '@open-cells/page-controller';
+import { Task } from './todo-item'; // Import the Task type from the correct file path
 import './todo-item';
 
 @customElement('todo-list-page')
@@ -18,10 +19,11 @@ export class TodoListPage extends LitElement {
       height: 50vh;
       border: 1px solid #ccc;
       padding: 2rem;
-      background-color: gray;
+      background-color: pink;
       border-radius: 5px;
     }
-    input, button {
+    input,
+    button {
       padding: 0.5rem 1.5rem;
       border: none;
       border-radius: 5px;
@@ -33,12 +35,10 @@ export class TodoListPage extends LitElement {
       justify-content: space-between;
       align-items: center;
       width: 100%;
-      border: 1px solid #ccc;
+      border: 1px solid rgb(204, 204, 204);
       padding: 10px;
       margin-top: 10px;
     }
-  {
-     
   `;
 
   connectedCallback() {
