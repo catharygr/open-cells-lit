@@ -17,28 +17,38 @@ export class ProductoPage extends LitElement {
     }
 
     .product-container img {
-  width: 100%;
-  max-width: 20rem;
-  height: auto;
-}
+      width: 100%;
+      max-width: 20rem;
+      height: auto;
     }
 
     .product-details {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
 
-.product-details h3 {
-font-size: 1.5rem;
-  font-weight: 900;
-}
-  .product-price {
-   font-weight: 900;
-  }
+    .product-details h3 {
+    f ont-size: 1.5rem;
+      font-weight: 900;
+    }
+
+    .product-price {
+    font-weight: 900;
+    }
+    
    .product-category {
     color: gray;
    }
+
+  .btn-product {
+    padding: 0.5rem 1rem;
+    background-color: purple;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0.5rem;
    
   `;
 
@@ -90,7 +100,6 @@ font-size: 1.5rem;
   }
 
   render() {
-    console.log(this._favoritos);
     return html`
       <div class="product-container">
         <div class="product-details">
@@ -107,7 +116,9 @@ font-size: 1.5rem;
             ${this._producto ? this._producto.category : ''}
           </p>
         </div>
-        <button @click="${this.favoritos}">Add a favoritos</button>
+        <button class="btn-product" @click="${this.favoritos}">
+          Add a favoritos
+        </button>
       </div>
     `;
   }
