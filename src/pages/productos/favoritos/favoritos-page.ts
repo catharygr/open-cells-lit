@@ -47,7 +47,7 @@ export class FavoritosPage extends LitElement {
   render() {
     return html`
       <div class="container-favoritos">
-        <h1>Favoritos</h1>
+        <h1>Productos favoritos</h1>
         ${this._favoritos.map(
           (favorito) => html`
             <div class="productos">
