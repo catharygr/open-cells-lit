@@ -46,19 +46,26 @@ export class UsuarioPage extends LitElement {
     telefono: '',
   };
 
+  @state()
+  private _userData = { nombre: '', email: '', telefono: '' };
+
   firstUpdated() {
-    // this.controller.subscribe('ch_user', (value: any) => {
-    //   this.formData = value;
-    // });
+    this.controller.subscribe('ch_user', (data: any) => {
+      this._userData = data;
+    });
     this._inputs.forEach((input) => {
       input.addEventListener('input', () => {
         this.formData = {
           ...this.formData,
           [input.name]: input.value,
         };
-        // this.controller.publish('ch_user', this.formData);
       });
     });
+  }
+
+  publicarDatos(e) {
+    e.preventDefault();
+    this.controller.publish('ch_user', this.formData);
   }
 
   salir() {
@@ -66,12 +73,11 @@ export class UsuarioPage extends LitElement {
     this.controller.navigate('home');
   }
   render() {
-    console.log(this.formData);
     return html`
       <div class="container-usuario">
         <h1>Usuario</h1>
         <h2>Por favor rellene sus datos de usuario:</h2>
-        <form class="form-usuario">
+        <form @submit="${this.publicarDatos}" class="form-usuario">
           <label class="label-usuario" for="nombre">Nombre:</label>
           <input
             type="text"
@@ -101,6 +107,12 @@ export class UsuarioPage extends LitElement {
         <button class="btn-usuario" @click=${this.salir}>
           Salir y volver a home
         </button>
+        <div>
+          <h3>Datos guardados:</h3>
+          <p>Nombre: ${this._userData?.nombre}</p>
+          <p>Email: ${this._userData?.email}</p>
+          <p>Teléfono: ${this._userData?.telefono}</p>
+        </div>
       </div>
     `;
   }

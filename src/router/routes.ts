@@ -58,14 +58,6 @@ export const routes: RouteDefinition[] = [
     },
   },
   {
-    path: '/input-publico-on',
-    name: 'input-publico-on',
-    component: 'input-publico-on-page',
-    action: async () => {
-      await import('../pages/input-publico-on/input-publico-on-page.js');
-    },
-  },
-  {
     path: '/not-found',
     name: 'not-found',
     notFound: true,
