@@ -56,9 +56,8 @@ export class ContadorPage extends LitElement {
   @query('#input-seconds') secondsInput!: HTMLInputElement;
 
   startCounter() {
-    this._seconds = this.secondsInput.value
-      ? parseInt(this.secondsInput.value)
-      : 300;
+    // @ts-ignore
+    this._seconds = this.secondsInput.value;
     this._start = true;
   }
 

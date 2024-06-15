@@ -34,6 +34,11 @@ export class ContadorDisplay extends LitElement {
         this.stopCounter();
       }
     }
+    if (changedProperties.has('segundos')) {
+      this._horas = Math.floor(this.segundos! / 3600);
+      this._minutos = Math.floor((this.segundos! % 3600) / 60);
+      this._segundos = Math.floor(this.segundos! % 60);
+    }
   }
 
   starCounter() {
