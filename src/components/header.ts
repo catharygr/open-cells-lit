@@ -211,6 +211,17 @@ export class HeaderComponent extends LitElement {
                 Login</a
               >
             </li>
+            <li>
+              <a
+                href="/tareas"
+                @click="${(e: Event) => {
+                  e.preventDefault();
+                  this.pageController.navigate('tareas');
+                }}"
+              >
+                Tareas</a
+              >
+            </li>
           </ul>
         </div>
       </header>
