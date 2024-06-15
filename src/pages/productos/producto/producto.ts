@@ -63,7 +63,7 @@ font-size: 1.5rem;
   disconnectedCallback(): void {
     super.disconnectedCallback();
     this.pageController.unsubscribe('ch_products');
-    this.pageController.unsubscribe('ch_favoritos');
+    this.pageController.unsubscribe('ch_favs');
   }
 
   updated(changedProperties: { has: (arg0: string) => any }) {
@@ -73,7 +73,7 @@ font-size: 1.5rem;
   }
 
   favoritos() {
-    this.pageController.publish('ch_favoritos', [
+    this.pageController.publish('ch_favs', [
       ...this._favoritos,
       this._producto,
     ]);
