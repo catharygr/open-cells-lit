@@ -222,6 +222,17 @@ export class HeaderComponent extends LitElement {
                 Tareas</a
               >
             </li>
+            <li>
+              <a
+                href="/not-found"
+                @click="${(e: Event) => {
+                  e.preventDefault();
+                  this.pageController.navigate('not-found');
+                }}"
+              >
+                Not found</a
+              >
+            </li>
           </ul>
         </div>
       </header>
