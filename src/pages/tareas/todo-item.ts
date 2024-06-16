@@ -8,26 +8,18 @@ interface Task {
 @customElement('todo-item')
 export class TodoItem extends LitElement {
   static styles = css`
-    :host {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      border: 1px solid red;
-    }
     .todo-item {
       display: flex;
       justify-content: space-between;
       align-items: center;
       width: 100%;
-    }
-    .todo-item {
-      // padding: 0.5rem 1.5rem;
-      border: none;
+      border: 1px solid red;
       border-radius: 5px;
-      text-align: left;
+      padding: 0 1rem;
+      background-color: #f1f1f1;
     }
+
     .btn-todo-item {
-      margin-left: 1rem;
       padding: 0.5rem 1rem;
       background-color: #f1f1f1;
       border: none;
@@ -41,15 +33,10 @@ export class TodoItem extends LitElement {
   render() {
     return html`
       <div class="todo-item">
-        <div>
-          ${this.task.title}
-          <button
-            class="btn-todo-item"
-            @click=${() => this.onDelete(this.task)}
-          >
-            Eliminar
-          </button>
-        </div>
+        <p>${this.task.title}</p>
+        <button class="btn-todo-item" @click=${() => this.onDelete(this.task)}>
+          Eliminar
+        </button>
       </div>
     `;
   }

@@ -13,14 +13,14 @@ export class TodoListPage extends LitElement {
   @property({ type: Array }) tasks: Task[] = [];
 
   static styles = css`
-    :host {
+    .todo-list {
       display: flex;
       flex-direction: column;
-      align-items: center;
+      // align-items: center;
       margin: 5rem auto;
       width: 50%;
       height: 50vh;
-      border: 1px solid #ccc;
+      border: 10px solid #ccc;
       padding: 2rem;
       background-color: pink;
       border-radius: 5px;
@@ -32,15 +32,9 @@ export class TodoListPage extends LitElement {
       border-radius: 5px;
       text-align: left;
     }
-
-    .todo-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 100%;
-      border: 1px solid rgb(204, 204, 204);
-      padding: 10px;
-      margin-top: 10px;
+    .form-todo {
+      align-self: center;
+      margin-bottom: 1rem;
     }
   `;
 
@@ -71,14 +65,15 @@ export class TodoListPage extends LitElement {
           <input name="name" placeholder="Nombre de la tarea" required />
           <button type="submit">Agregar tarea</button>
         </form>
-        ${this.tasks.map(
-          (task) =>
-            html`<todo-item
-              class="todo-item"
-              .task=${task}
-              .onDelete=${() => this.handleDelete(task)}
-            ></todo-item>`
-        )}
+        <div>
+          ${this.tasks.map(
+            (task) =>
+              html`<todo-item
+                .task=${task}
+                .onDelete=${() => this.handleDelete(task)}
+              ></todo-item>`
+          )}
+        </div>
       </div>
     `;
   }
