@@ -47,6 +47,7 @@ export class FavoritosPage extends LitElement {
   render() {
     return html`
       <div class="container-favoritos">
+        <button @click="${() => this.pageController.backStep()}">Volver</button>
         <h1>Productos favoritos</h1>
         ${this._favoritos.map(
           (favorito) => html`
