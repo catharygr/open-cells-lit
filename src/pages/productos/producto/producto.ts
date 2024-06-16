@@ -102,6 +102,7 @@ export class ProductoPage extends LitElement {
   render() {
     return html`
       <div class="product-container">
+        <button @click="${() => this.pageController.backStep()}">Volver</button>
         <div class="product-details">
           <img
             src="${this._producto ? this._producto.image : ''}"

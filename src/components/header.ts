@@ -107,6 +107,9 @@ export class HeaderComponent extends LitElement {
         font-size: 1.5rem;
         text-align: right;
       }
+      .menu {
+        width: 60%;
+      }
     }
   `;
 
