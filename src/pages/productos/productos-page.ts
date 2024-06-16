@@ -4,6 +4,7 @@ import { customElement } from 'lit/decorators.js';
 
 @customElement('productos-page')
 export class ProductosPage extends LitElement {
+  [x: string]: any;
   pageController = new PageController(this);
 
   static styles = css`
@@ -75,7 +76,7 @@ export class ProductosPage extends LitElement {
     return html`
       <div class="products-container">
         ${this._productos.map(
-          (producto) => html`
+          (producto: any) => html`
             <div class="product-card">
               <img
                 class="card-img"
