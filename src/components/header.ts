@@ -18,11 +18,11 @@ export class HeaderComponent extends LitElement {
       color: white;
       padding: 2rem;
     }
-
-    img {
+      .img-open-cells {
       width: 2rem;
       height: 2rem;
-    }
+      }
+
     a {
       color: white;
       text-decoration: none;
@@ -110,6 +110,9 @@ export class HeaderComponent extends LitElement {
       .menu {
         width: 60%;
       }
+        .img-open-cells {
+        width: 1.5rem;
+        height: 1.5rem;
     }
   `;
 
