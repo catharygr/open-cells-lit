@@ -17,14 +17,16 @@ export class TodoItem extends LitElement {
       border-radius: 5px;
       padding: 0 1rem;
       background-color: #f1f1f1;
+      box-sizing: border-box;
     }
 
     .btn-todo-item {
       padding: 0.5rem 1rem;
-      background-color: #f1f1f1;
+      background-color: red;
       border: none;
       border-radius: 5px;
       cursor: pointer;
+      color: white;
     }
   `;
   @property({ type: Object }) task: Task = { title: '' };
