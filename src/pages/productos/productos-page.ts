@@ -1,6 +1,6 @@
 import { css, html, LitElement } from 'lit';
 import { PageController } from '@open-cells/page-controller';
-import { customElement, state } from 'lit/decorators.js';
+import { customElement } from 'lit/decorators.js';
 
 @customElement('productos-page')
 export class ProductosPage extends LitElement {
@@ -53,19 +53,23 @@ export class ProductosPage extends LitElement {
 }
   `;
 
-  @state() private _productos: any[] = [];
+  // @state() private _productos: any[] = [];
 
-  connectedCallback() {
-    super.connectedCallback();
-    this.pageController.subscribe('ch_products', (data: any[]) => {
-      this._productos = data;
-    });
-  }
+  // connectedCallback() {
+  //   super.connectedCallback();
+  //   this.pageController.subscribe('ch_products', (data: any[]) => {
+  //     this._productos = data;
+  //   });
+  // }
 
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    this.pageController.unsubscribe('ch_products');
-  }
+  // disconnectedCallback() {
+  //   super.disconnectedCallback();
+  //   this.pageController.unsubscribe( 'ch_products');
+  // }
+
+  static inbounds = {
+    _productos: { channel: 'ch_products' },
+  };
 
   render() {
     return html`
