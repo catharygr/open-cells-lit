@@ -157,6 +157,7 @@ export class HeaderComponent extends LitElement {
           />
           Open Cells</a
         >
+
         <p class="use-name">Hola ${this._userNombre}</p>
         <mwc-icon @click="${this.toggleMenu}">menu</mwc-icon>
         <div class="menu ${this.isOpen ? 'open' : ''}">
