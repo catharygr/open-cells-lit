@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@material/mwc-icon": "^0.27.0",
+    "@material/web": "^1.5.0",
     "@open-cells/core": "^1.0.1",
     "@open-cells/element-controller": "^1.0.1",
     "@open-cells/page-controller": "^1.0.1",

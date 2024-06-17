@@ -2,6 +2,8 @@ import { LitElement, html, css } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { PageController } from '@open-cells/page-controller';
 import '@material/mwc-icon';
+import '@material/web/iconbutton/outlined-icon-button.js';
+import '@material/web/icon/icon.js';
 
 @customElement('header-component')
 export class HeaderComponent extends LitElement {
@@ -18,10 +20,10 @@ export class HeaderComponent extends LitElement {
       color: white;
       padding: 2rem;
     }
-      .img-open-cells {
+    .img-open-cells {
       width: 2rem;
       height: 2rem;
-      }
+    }
 
     a {
       color: white;
@@ -110,11 +112,20 @@ export class HeaderComponent extends LitElement {
       .menu {
         width: 60%;
       }
-        .img-open-cells {
+      .img-open-cells {
         width: 1.5rem;
         height: 1.5rem;
+      }
     }
   `;
+
+  private _toogleDarkMode() {
+    const mode = document.documentElement.getAttribute('data-theme') || 'light';
+    document.documentElement.setAttribute(
+      'data-theme',
+      mode === 'light' ? 'dark' : 'light'
+    );
+  }
 
   @property({ type: Boolean }) isOpen = false;
   @state() private _userNombre = '';
@@ -157,6 +168,17 @@ export class HeaderComponent extends LitElement {
           />
           Open Cells</a
         >
+
+        <md-outlined-icon-button
+          class="dark-mode"
+          aria-label="Dark Mode"
+          data-mode="light"
+          toggle
+          @click=${() => this._toogleDarkMode()}
+        >
+          <md-icon>dark_mode</md-icon>
+          <md-icon slot="selected">light_mode</md-icon>
+        </md-outlined-icon-button>
 
         <p class="use-name">Hola ${this._userNombre}</p>
         <mwc-icon @click="${this.toggleMenu}">menu</mwc-icon>
