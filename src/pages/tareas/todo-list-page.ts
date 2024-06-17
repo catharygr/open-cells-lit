@@ -16,7 +16,6 @@ export class TodoListPage extends LitElement {
     .todo-list {
       display: flex;
       flex-direction: column;
-      // align-items: center;
       margin: 5rem auto;
       width: 50%;
       height: 50vh;
@@ -35,6 +34,8 @@ export class TodoListPage extends LitElement {
     .form-todo {
       align-self: center;
       margin-bottom: 1rem;
+    }
+    @media (max-width: 48rem) {
     }
   `;
 
