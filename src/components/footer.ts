@@ -17,6 +17,7 @@ export class FooterComponent extends LitElement {
       }
     }
   `;
+
   render() {
     return html`
       <footer>

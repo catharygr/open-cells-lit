@@ -137,6 +137,10 @@ export class HeaderComponent extends LitElement {
       this.style.setProperty('--text-color', '#fff');
       document.documentElement.setAttribute('data-theme', 'light');
     }
+    const event = new CustomEvent('theme-changed', {
+      detail: { theme: document.documentElement.getAttribute('data-theme') },
+    });
+    this.dispatchEvent(event);
   }
 
   @property({ type: Boolean }) isOpen = false;
