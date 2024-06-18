@@ -101,6 +101,13 @@ export class HeaderComponent extends LitElement {
       margin-block: 0;
       padding: 0;
     }
+    .dark-mode {
+      display: flex;
+      justify-content: center;
+      margin-left: 1rem;
+      padding: 0;
+    }
+
     @media (max-width: 48rem) {
       header {
         justify-content: space-between;
