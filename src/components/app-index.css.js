@@ -17,6 +17,10 @@
 import { css } from 'lit';
 
 export const styles = css`
+  :root {
+    --background-color: #333;
+    --text-color: #fff;
+  }
   :host {
     display: flex;
     flex-direction: column;
