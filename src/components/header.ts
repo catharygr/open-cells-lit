@@ -136,10 +136,12 @@ export class HeaderComponent extends LitElement {
       this.style.setProperty('--background-color', '#333');
       this.style.setProperty('--text-color', '#fff');
       document.documentElement.setAttribute('data-theme', 'dark');
+      localStorage.setItem('theme', 'dark');
     } else {
       this.style.setProperty('--background-color', 'pink');
       this.style.setProperty('--text-color', '#fff');
       document.documentElement.setAttribute('data-theme', 'light');
+      localStorage.setItem('theme', 'light');
     }
   }
 

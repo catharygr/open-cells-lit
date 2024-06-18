@@ -4,7 +4,14 @@ import { customElement } from 'lit/decorators.js';
 @customElement('footer-component')
 export class FooterComponent extends LitElement {
   static styles = css`
+    :host {
+      --background-color: #333;
+      --text-color: #fff;
+    }
     footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
       display: flex;
       justify-content: center;
       background-color: var(--background-color);
