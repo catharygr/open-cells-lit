@@ -130,19 +130,27 @@ export class HeaderComponent extends LitElement {
     }
   `;
 
-  private _toogleDarkMode() {
+  private _updateTheme() {
     const mode = document.documentElement.getAttribute('data-theme') || 'light';
-    if (mode === 'light') {
+    if (mode === 'dark') {
       this.style.setProperty('--background-color', '#333');
       this.style.setProperty('--text-color', '#fff');
+    } else {
+      this.style.setProperty('--background-color', 'pink');
+      this.style.setProperty('--text-color', '#000');
+    }
+  }
+
+  private _toggleDarkMode() {
+    const mode = document.documentElement.getAttribute('data-theme') || 'light';
+    if (mode === 'light') {
       document.documentElement.setAttribute('data-theme', 'dark');
       localStorage.setItem('theme', 'dark');
     } else {
-      this.style.setProperty('--background-color', 'pink');
-      this.style.setProperty('--text-color', '#fff');
       document.documentElement.setAttribute('data-theme', 'light');
       localStorage.setItem('theme', 'light');
     }
+    this._updateTheme();
   }
 
   @property({ type: Boolean }) isOpen = false;
@@ -155,6 +163,7 @@ export class HeaderComponent extends LitElement {
 
   connectedCallback(): void {
     super.connectedCallback();
+    this._updateTheme();
     this.pageController.publish('ch_favoritos', []);
     this.pageController.subscribe('ch_user', (data: any) => {
       this._userNombre = data.nombre;
@@ -192,7 +201,7 @@ export class HeaderComponent extends LitElement {
           aria-label="Dark Mode"
           data-mode="light"
           toggle
-          @click=${() => this._toogleDarkMode()}
+          @click=${() => this._toggleDarkMode()}
         >
           <md-icon><img src="/images/dark_mode.png" /></md-icon>
           <md-icon slot="selected"

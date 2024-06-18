@@ -17,15 +17,33 @@ export class FooterComponent extends LitElement {
       background-color: var(--background-color);
       color: var(--text-color);
       padding: 2rem;
-
-      & p {
-        margin: 0;
-        font-weight: bold;
-      }
+    }
+    footer p {
+      margin: 0;
+      font-weight: bold;
     }
   `;
 
+  connectedCallback() {
+    super.connectedCallback();
+    this._updateTheme();
+    const observer = new MutationObserver(() => this._updateTheme());
+    observer.observe(document.documentElement, { attributes: true });
+  }
+
+  _updateTheme() {
+    const mode = document.documentElement.getAttribute('data-theme') || 'light';
+    if (mode === 'dark') {
+      this.style.setProperty('--background-color', '#333');
+      this.style.setProperty('--text-color', '#fff');
+    } else {
+      this.style.setProperty('--background-color', 'pink');
+      this.style.setProperty('--text-color', '#000');
+    }
+  }
+
   render() {
+    console.log('Rendering footer');
     return html`
       <footer>
         <p>&copy; ${new Date().getFullYear()} Open Cells by Bubulazi</p>
