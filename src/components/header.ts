@@ -137,7 +137,7 @@ export class HeaderComponent extends LitElement {
       this.style.setProperty('--text-color', '#fff');
     } else {
       this.style.setProperty('--background-color', 'pink');
-      this.style.setProperty('--text-color', '#000');
+      this.style.setProperty('--text-color', '#fff');
     }
   }
 
