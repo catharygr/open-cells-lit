@@ -12,12 +12,16 @@ export class HeaderComponent extends LitElement {
   @query('.close') _close!: HTMLElement;
 
   static styles = css`
+    :host {
+      --background-color: #333;
+      --text-color: #fff;
+    }
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background-color: pink;
-      color: white;
+      background-color: var(--background-color);
+      color: var(--text-color);
       padding: 2rem;
     }
     .img-open-cells {
@@ -128,10 +132,15 @@ export class HeaderComponent extends LitElement {
 
   private _toogleDarkMode() {
     const mode = document.documentElement.getAttribute('data-theme') || 'light';
-    document.documentElement.setAttribute(
-      'data-theme',
-      mode === 'light' ? 'dark' : 'light'
-    );
+    if (mode === 'light') {
+      this.style.setProperty('--background-color', '#333');
+      this.style.setProperty('--text-color', '#fff');
+      document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+      this.style.setProperty('--background-color', 'pink');
+      this.style.setProperty('--text-color', '#fff');
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
   }
 
   @property({ type: Boolean }) isOpen = false;
