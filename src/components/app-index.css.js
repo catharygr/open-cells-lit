@@ -23,6 +23,7 @@ export const styles = css`
     height: 100%;
     box-sizing: border-box;
   }
+
   main {
     flex: 1;
     position: relative;

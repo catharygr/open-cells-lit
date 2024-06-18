@@ -2,6 +2,8 @@ import { LitElement, html, css } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { PageController } from '@open-cells/page-controller';
 import '@material/mwc-icon';
+import '@material/web/iconbutton/outlined-icon-button.js';
+import '@material/web/icon/icon.js';
 
 @customElement('header-component')
 export class HeaderComponent extends LitElement {
@@ -10,18 +12,22 @@ export class HeaderComponent extends LitElement {
   @query('.close') _close!: HTMLElement;
 
   static styles = css`
+    :host {
+      --background-color: #333;
+      --text-color: #fff;
+    }
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background-color: pink;
-      color: white;
+      background-color: var(--background-color);
+      color: var(--text-color);
       padding: 2rem;
     }
-      .img-open-cells {
+    .img-open-cells {
       width: 2rem;
       height: 2rem;
-      }
+    }
 
     a {
       color: white;
@@ -99,6 +105,13 @@ export class HeaderComponent extends LitElement {
       margin-block: 0;
       padding: 0;
     }
+    .dark-mode {
+      display: flex;
+      justify-content: center;
+      margin-left: 1rem;
+      padding: 0;
+    }
+
     @media (max-width: 48rem) {
       header {
         justify-content: space-between;
@@ -110,11 +123,35 @@ export class HeaderComponent extends LitElement {
       .menu {
         width: 60%;
       }
-        .img-open-cells {
+      .img-open-cells {
         width: 1.5rem;
         height: 1.5rem;
+      }
     }
   `;
+
+  private _updateTheme() {
+    const mode = document.documentElement.getAttribute('data-theme') || 'light';
+    if (mode === 'dark') {
+      this.style.setProperty('--background-color', '#333');
+      this.style.setProperty('--text-color', '#fff');
+    } else {
+      this.style.setProperty('--background-color', 'pink');
+      this.style.setProperty('--text-color', '#fff');
+    }
+  }
+
+  private _toggleDarkMode() {
+    const mode = document.documentElement.getAttribute('data-theme') || 'light';
+    if (mode === 'light') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'light');
+      localStorage.setItem('theme', 'light');
+    }
+    this._updateTheme();
+  }
 
   @property({ type: Boolean }) isOpen = false;
   @state() private _userNombre = '';
@@ -126,6 +163,7 @@ export class HeaderComponent extends LitElement {
 
   connectedCallback(): void {
     super.connectedCallback();
+    this._updateTheme();
     this.pageController.publish('ch_favoritos', []);
     this.pageController.subscribe('ch_user', (data: any) => {
       this._userNombre = data.nombre;
@@ -157,6 +195,19 @@ export class HeaderComponent extends LitElement {
           />
           Open Cells</a
         >
+
+        <md-outlined-icon-button
+          class="dark-mode"
+          aria-label="Dark Mode"
+          data-mode="light"
+          toggle
+          @click=${() => this._toggleDarkMode()}
+        >
+          <md-icon><img src="/images/dark_mode.png" /></md-icon>
+          <md-icon slot="selected"
+            ><img clase="icon-light" src="/images/light_mode.png"
+          /></md-icon>
+        </md-outlined-icon-button>
 
         <p class="use-name">Hola ${this._userNombre}</p>
         <mwc-icon @click="${this.toggleMenu}">menu</mwc-icon>
