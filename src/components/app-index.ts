@@ -6,7 +6,8 @@ import { ElementController } from '@open-cells/element-controller';
 import { routes } from '../router/routes.js';
 import { styles } from './app-index.css.js';
 import data from '../data/db-backup.json';
-import './header.js';
+import './header.ts';
+import './footer.ts';
 
 startApp({
   routes,

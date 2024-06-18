@@ -194,7 +194,7 @@ export class HeaderComponent extends LitElement {
         >
           <md-icon><img src="/images/dark_mode.png" /></md-icon>
           <md-icon slot="selected"
-            ><img src="/images/light_mode.png"
+            ><img clase="icon-light" src="/images/light_mode.png"
           /></md-icon>
         </md-outlined-icon-button>
 
