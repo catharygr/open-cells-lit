@@ -12,6 +12,10 @@ export class HeaderComponent extends LitElement {
   @query('.close') _close!: HTMLElement;
 
   static styles = css`
+    :host {
+      --background-color: #333;
+      --text-color: #fff;
+    }
     header {
       display: flex;
       justify-content: space-between;
