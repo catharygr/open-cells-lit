@@ -53,6 +53,7 @@ export class AppIndex extends LitElement {
       <main role="main" tabindex="-1">
         <slot></slot>
       </main>
+      <footer-component> </footer-component>
     `;
   }
 }

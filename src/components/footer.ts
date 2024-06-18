@@ -1,12 +1,30 @@
-import { LitElement } from 'lit';
+import { LitElement, html, css } from 'lit';
 import { customElement } from 'lit/decorators.js';
 
 @customElement('footer-component')
 export class FooterComponent extends LitElement {
+  static styles = css`
+    :host {
+      --background-color: #333;
+      --text-color: #fff;
+    }
+    footer {
+      display: flex;
+      justify-content: center;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      padding: 2rem;
+
+      & p {
+        margin: 0;
+        font-weight: bold;
+      }
+    }
+  `;
   render() {
-    return `
+    return html`
       <footer>
-        <p>&copy; ${new Date().getFullYear()} Open Cells</p>
+        <p>&copy; ${new Date().getFullYear()} Open Cells by Bubulazi</p>
       </footer>
     `;
   }
