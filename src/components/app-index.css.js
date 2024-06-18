@@ -17,16 +17,13 @@
 import { css } from 'lit';
 
 export const styles = css`
-  :root {
-    --background-color: #333;
-    --text-color: #fff;
-  }
   :host {
     display: flex;
     flex-direction: column;
     height: 100%;
     box-sizing: border-box;
   }
+
   main {
     flex: 1;
     position: relative;
