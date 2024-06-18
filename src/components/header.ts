@@ -193,7 +193,9 @@ export class HeaderComponent extends LitElement {
           @click=${() => this._toogleDarkMode()}
         >
           <md-icon><img src="/images/dark_mode.png" /></md-icon>
-          <md-icon slot="selected"><img src="light_mode" /></md-icon>
+          <md-icon slot="selected"
+            ><img src="/images/light_mode.png"
+          /></md-icon>
         </md-outlined-icon-button>
 
         <p class="use-name">Hola ${this._userNombre}</p>
