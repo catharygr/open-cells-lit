@@ -113,11 +113,15 @@ export class HeaderComponent extends LitElement {
       padding: 0;
     }
     .search {
-      margin-left: 5rem;
+      width: 100%;
+      max-width: 20rem;
+      margin: 1rem auto;
+      padding: 0.5rem;
     }
 
     @media (max-width: 48rem) {
       header {
+        flex-direction: column;
         justify-content: space-between;
       }
       a {
