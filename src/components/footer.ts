@@ -9,9 +9,6 @@ export class FooterComponent extends LitElement {
       --text-color: #fff;
     }
     footer {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
       display: flex;
       justify-content: center;
       background-color: var(--background-color);

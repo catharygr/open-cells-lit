@@ -27,7 +27,7 @@ export const styles = css`
   main {
     flex: 1;
     position: relative;
-    // overflow: hidden;
+    overflow: scroll;
   }
 
   main ::slotted(*) {
