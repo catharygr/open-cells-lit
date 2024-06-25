@@ -4,6 +4,7 @@ import { PageController } from '@open-cells/page-controller';
 import '@material/mwc-icon';
 import '@material/web/iconbutton/outlined-icon-button.js';
 import '@material/web/icon/icon.js';
+import '@material/web/textfield/outlined-text-field';
 
 @customElement('header-component')
 export class HeaderComponent extends LitElement {
@@ -155,6 +156,7 @@ export class HeaderComponent extends LitElement {
 
   @property({ type: Boolean }) isOpen = false;
   @state() private _userNombre = '';
+  @state() private _search = '';
 
   toggleMenu() {
     this.isOpen = !this.isOpen;
@@ -176,6 +178,14 @@ export class HeaderComponent extends LitElement {
         this.toggleMenu();
       });
     });
+  }
+
+  handleSearch(e: Event) {
+    e.preventDefault();
+    const searchProduct = (e.target as HTMLInputElement).value;
+    this.pageController.publish('ch_search', searchProduct);
+    this._search = searchProduct;
+    console.log(searchProduct);
   }
 
   render() {
@@ -208,6 +218,11 @@ export class HeaderComponent extends LitElement {
             ><img clase="icon-light" src="/images/light_mode.png"
           /></md-icon>
         </md-outlined-icon-button>
+        <md-outlined-text-field
+          label="Buscar producto"
+          icon="search"
+          @input="${(e: Event) => this.handleSearch(e)}"
+        ></md-outlined-text-field>
 
         <p class="use-name">Hola ${this._userNombre}</p>
         <mwc-icon @click="${this.toggleMenu}">menu</mwc-icon>

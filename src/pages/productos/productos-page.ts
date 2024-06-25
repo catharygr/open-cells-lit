@@ -70,6 +70,7 @@ export class ProductosPage extends LitElement {
 
   static inbounds = {
     _productos: { channel: 'ch_products' },
+    _search: { channel: 'ch_search' },
   };
 
   render() {
