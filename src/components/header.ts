@@ -112,6 +112,9 @@ export class HeaderComponent extends LitElement {
       margin-left: 1rem;
       padding: 0;
     }
+    .search {
+      margin-left: 5rem;
+    }
 
     @media (max-width: 48rem) {
       header {
@@ -185,7 +188,6 @@ export class HeaderComponent extends LitElement {
     const searchProduct = (e.target as HTMLInputElement).value;
     this.pageController.publish('ch_search', searchProduct);
     this._search = searchProduct;
-    console.log(searchProduct);
   }
 
   render() {
@@ -219,8 +221,9 @@ export class HeaderComponent extends LitElement {
           /></md-icon>
         </md-outlined-icon-button>
         <md-outlined-text-field
+          class="search"
           label="Buscar producto"
-          icon="search"
+          .value="${this._search}"
           @input="${(e: Event) => this.handleSearch(e)}"
         ></md-outlined-text-field>
 

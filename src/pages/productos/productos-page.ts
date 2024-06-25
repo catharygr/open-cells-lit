@@ -1,6 +1,6 @@
 import { css, html, LitElement } from 'lit';
 import { PageController } from '@open-cells/page-controller';
-import { customElement } from 'lit/decorators.js';
+import { customElement, state } from 'lit/decorators.js';
 
 @customElement('productos-page')
 export class ProductosPage extends LitElement {
@@ -53,30 +53,38 @@ export class ProductosPage extends LitElement {
 
 }
   `;
+  @state() private _productos: any[] = [];
+  @state() private _search: string = '';
+  @state() private _productosFiltrados: any[] = [];
 
-  // @state() private _productos: any[] = [];
+  // static inbounds = {
+  //   _productos: { channel: 'ch_products' },
+  //   _search: { channel: 'ch_search' },
+  // };
 
-  // connectedCallback() {
-  //   super.connectedCallback();
-  //   this.pageController.subscribe('ch_products', (data: any[]) => {
-  //     this._productos = data;
-  //   });
-  // }
+  connectedCallback(): void {
+    super.connectedCallback();
+    this.pageController.subscribe('ch_products', (productos: any[]) => {
+      this._productos = productos;
+      this._filtrarYActualizarProductos();
+    });
+    this.pageController.subscribe('ch_search', (searchTerm: string) => {
+      this._search = searchTerm.toLowerCase();
+      this._filtrarYActualizarProductos();
+    });
+  }
 
-  // disconnectedCallback() {
-  //   super.disconnectedCallback();
-  //   this.pageController.unsubscribe( 'ch_products');
-  // }
-
-  static inbounds = {
-    _productos: { channel: 'ch_products' },
-    _search: { channel: 'ch_search' },
-  };
+  private _filtrarYActualizarProductos(): void {
+    this._productosFiltrados = this._productos.filter((producto) =>
+      producto.title.toLowerCase().includes(this._search)
+    );
+    this.requestUpdate();
+  }
 
   render() {
     return html`
       <div class="products-container">
-        ${this._productos.map(
+        ${this._productosFiltrados.map(
           (producto: any) => html`
             <div class="product-card">
               <img
