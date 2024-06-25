@@ -122,18 +122,30 @@ export class HeaderComponent extends LitElement {
     @media (max-width: 48rem) {
       header {
         flex-direction: column;
-        justify-content: space-between;
       }
       a {
         font-size: 1.5rem;
-        text-align: right;
+        text-align: center;
+        margin: 0.2rem 0;
       }
       .menu {
-        width: 60%;
+        width: 100%;
+        padding: 1rem;
+      }
+
+      .menu ul li {
+        margin-bottom: 0.5rem;
       }
       .img-open-cells {
         width: 1.5rem;
         height: 1.5rem;
+      }
+      .use-name {
+        margin-right: 1rem;
+        margin-left: 0;
+      }
+      .dark-mode {
+        margin-left: 0;
       }
     }
   `;
