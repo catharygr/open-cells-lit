@@ -1,1 +1,1 @@
-### Aprendiendo como funciona el framework Open Cells
+## Aprendiendo como funciona el framework Open Cells
