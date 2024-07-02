@@ -43,7 +43,10 @@ export class FooterComponent extends LitElement {
     console.log('Rendering footer');
     return html`
       <footer>
-        <p>&copy; ${new Date().getFullYear()} Open Cells by Bubulazi</p>
+        <p>
+          &copy; ${new Date().getFullYear()} Open Cells by
+          <a href="https://bubulazi.com/">Bubulazi</a>
+        </p>
       </footer>
     `;
   }
