@@ -19,6 +19,13 @@ export class FooterComponent extends LitElement {
       margin: 0;
       font-weight: bold;
     }
+    footer a {
+      color: var(--text-color);
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
   `;
 
   connectedCallback() {
