@@ -199,6 +199,13 @@ export class HeaderComponent extends LitElement {
     });
   }
 
+  handleSearch(e: Event) {
+    e.preventDefault();
+    const searchProduct = (e.target as HTMLInputElement).value;
+    this.pageController.publish('ch_search', searchProduct);
+    this._search = searchProduct;
+  }
+
   render() {
     return html`
       <header>
