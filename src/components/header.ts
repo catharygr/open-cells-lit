@@ -4,7 +4,7 @@ import { PageController } from '@open-cells/page-controller';
 import '@material/mwc-icon';
 import '@material/web/iconbutton/outlined-icon-button.js';
 import '@material/web/icon/icon.js';
-import '@material/web/textfield/outlined-text-field';
+import '@material/web/textfield/outlined-text-field.js';
 
 @customElement('header-component')
 export class HeaderComponent extends LitElement {
