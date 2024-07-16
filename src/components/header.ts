@@ -111,6 +111,7 @@ export class HeaderComponent extends LitElement {
       justify-content: center;
       margin-left: 1rem;
       padding: 0;
+      color: white;
     }
 
     .search {
