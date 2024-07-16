@@ -112,6 +112,20 @@ export class HeaderComponent extends LitElement {
       margin-left: 1rem;
       padding: 0;
     }
+
+    // md-outlined-text-field {
+    //   flex-basis: auto;
+    //   flex-grow: 1;
+    //   height: 2.3rem;
+    //   --md-ref-typeface-plain: system-ui, sans-serif;
+    //   --md-filled-text-field-container-shape: 50px;
+    //   --md-filled-text-field-container-color: white;
+    //   --md-filled-text-field-top-space: 0.3rem;
+    //   --md-filled-text-field-bottom-space: 0.2rem;
+    //   --md-filled-text-field-active-indicator-height: 0px;
+    //   --md-filled-text-field-focus-active-indicator-height: 0px;
+    //   --md-filled-text-field-hover-active-indicator-color: transparent;
+    // }
     .search {
       width: 100%;
       max-width: 20rem;
