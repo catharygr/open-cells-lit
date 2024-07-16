@@ -9,49 +9,49 @@ export class ProductosPage extends LitElement {
 
   static styles = css`
     .products-container {
-       display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 1.5rem;
-  margin: 0.5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin: 0.5rem;
     }
     .product-card {
       position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  flex-basis: 200px;
-  flex-grow: 1;
-  border: 1px solid rgb(233, 233, 233);
-  border-radius: 5px;
-  overflow: hidden;
-  box-shadow: 0 0 5px 0 rgb(0 0 0 / 10%);
-  padding: 0.5rem;
-  height: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      flex-basis: 200px;
+      flex-grow: 1;
+      border: 1px solid rgb(233, 233, 233);
+      border-radius: 5px;
+      overflow: hidden;
+      box-shadow: 0 0 5px 0 rgb(0 0 0 / 10%);
+      padding: 0.5rem;
+      height: 100%;
+    }
     .card-img {
-  aspect-ratio: 3/2;
-  object-fit: cover;
-}
-.card-body {
- display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 0.5rem;
-  height: 100%;
-  }
+      aspect-ratio: 3/2;
+      object-fit: cover;
+    }
+    .card-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.5rem;
+      height: 100%;
+    }
     .link-crad-title {
       text-decoration: underline;
       cursor: pointer;
       font-size: 0.7rem;
     }
-      .card-description {
-       font-size: 0.7rem;
-      }
-       .card-price {
-        font-size: 0.9rem;
-  font-weight: 900;
-
-}
+    .card-description {
+      font-size: 0.7rem;
+    }
+    .card-price {
+      font-size: 0.9rem;
+      font-weight: 900;
+    }
   `;
   @state() private _productos: any[] = [];
   @state() private _search: string = '';
